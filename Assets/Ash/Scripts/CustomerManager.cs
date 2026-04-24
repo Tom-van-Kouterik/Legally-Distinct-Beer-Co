@@ -6,6 +6,7 @@ public class CustomerManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> seats = new List<GameObject>();
     [SerializeField] private List<GameObject> plates = new List<GameObject>();
+    [SerializeField] private List<GameObject> people = new List<GameObject>();
     [SerializeField] private List<bool> ocupation = new List<bool>() {false, false, false, false};
     [SerializeField] private string[] orderList;
     [SerializeField] private GameObject customer;
@@ -17,22 +18,22 @@ public class CustomerManager : MonoBehaviour
     private int gold;
     private int wait;
     private int chosenOrder;
+    private bool test;
+    private int select;
 
     // define order tags
     private void Start()
     {
         orderList = new string[2] {"Finish", "Respawn"};
+
     }
 
     // spawn the customer prefab and link it to the seat and plate of the asosiated spot and mark this spot as "taken"
     public void SpawnCustomer()
     {
         int spot;
-        if (atMax)
-        {
 
-        }
-        else if (!atMax)
+        if (!atMax)
         {
             spot = Random.Range(0, ocupation.Count);
 
@@ -48,8 +49,10 @@ public class CustomerManager : MonoBehaviour
                 chosenOrder = Random.Range(0, orderList.Length);
                 GameObject newCustomer = Instantiate(customer, seats[spot].transform);
                 customerFunctions = newCustomer.GetComponent<Customers>();
-                customerFunctions.SetVariables(orderList[chosenOrder], wait, gold, spot);
+                customerFunctions.SetVariables(orderList[chosenOrder], wait, gold, spot, this.gameObject);
+                people[spot] = newCustomer;
                 ocupation[spot] = true;
+
                 if (CheckCapacity() == true)
                 {
                     atMax = true;
@@ -103,6 +106,41 @@ public class CustomerManager : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void Switch()
+    {
+        select++;
+        if (select == ocupation.Count)
+        {
+            select = 0;
+        }
+    }
+
+    public void ChangeOrder()
+    {
+        if (test)
+        {
+            test = false;
+        }
+        else
+        {
+            test = true;
+        }
+    }
+    public void Serve()
+    {
+        Customers selectC;
+        selectC = people[select].GetComponent<Customers>();
+
+        if (test)
+        {
+            selectC.CompareOrder(beer);
+        }
+        else if (!test)
+        {
+            selectC.CompareOrder(wine);
         }
     }
 }
