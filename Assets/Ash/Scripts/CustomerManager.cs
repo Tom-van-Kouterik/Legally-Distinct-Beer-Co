@@ -7,7 +7,7 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private List<GameObject> seats = new List<GameObject>();
     [SerializeField] private List<GameObject> plates = new List<GameObject>();
     [SerializeField] private List<GameObject> people = new List<GameObject>();
-    [SerializeField] private List<bool> ocupation = new List<bool>() {false, false, false, false};
+    [SerializeField] private List<bool> isOcupied = new List<bool>() {false, false, false, false};
     [SerializeField] private string[] orderList;
     [SerializeField] private GameObject customer;
     [SerializeField] private GameObject beer;
@@ -25,46 +25,49 @@ public class CustomerManager : MonoBehaviour
     private void Start()
     {
         orderList = new string[2] {"Finish", "Respawn"};
-
     }
 
-    // spawn the customer prefab and link it to the seat and plate of the asosiated spot and mark this spot as "taken"
+    /// <summary>
+    /// spawn the customer prefab and link it to the seat and plate of the asosiated spot and mark this spot as "taken"
+    /// </summary>
     public void SpawnCustomer()
     {
-        int spot;
-
-        if (!atMax)
+        if (atMax)
         {
-            spot = Random.Range(0, ocupation.Count);
-
-            if (ocupation[spot] == true)
-            {
-                SpawnCustomer();
-            }
-            else if (ocupation[spot] == false)
-            {
-                Customers customerFunctions;
-                gold = Random.Range(0, 5);
-                wait = Random.Range(0, 5);
-                chosenOrder = Random.Range(0, orderList.Length);
-                GameObject newCustomer = Instantiate(customer, seats[spot].transform);
-                customerFunctions = newCustomer.GetComponent<Customers>();
-                customerFunctions.SetVariables(orderList[chosenOrder], wait, gold, spot, this.gameObject);
-                people[spot] = newCustomer;
-                ocupation[spot] = true;
-
-                if (CheckCapacity() == true)
-                {
-                    atMax = true;
-                }
-            }
+            return;
         }
+
+        int spot = Random.Range(0, isOcupied.Count);
+
+        while (isOcupied[spot])
+        {
+            spot = Random.Range(0, isOcupied.Count);
+        }
+
+        Customers customerFunctions;
+        gold = Random.Range(0, 5);
+        wait = Random.Range(0, 5);
+        chosenOrder = Random.Range(0, orderList.Length);
+        GameObject newCustomer = Instantiate(customer, seats[spot].transform);
+        customerFunctions = newCustomer.GetComponent<Customers>();
+        customerFunctions.SetVariables(orderList[chosenOrder], wait, gold, spot, this.gameObject);
+        people[spot] = newCustomer;
+        isOcupied[spot] = true;
+
+        if (CheckCapacity() == true)
+        {
+            atMax = true;
+        }
+              
     }
 
-    // called on from the customer in order completion to change the seat status
+    /// <summary>
+    /// called on from the customer in order completion to change the seat status
+    /// </summary>
+    /// <param name="seat">seat ID</param>
     public void DestroyCustomer(int seat)
     {
-        ocupation[seat] = false;
+        isOcupied[seat] = false;
 
         if (atMax)
         {
@@ -72,7 +75,11 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    // either add or remove gold from gold total depending on order completion
+    /// <summary>
+    /// either add or remove gold from gold total depending on order completion
+    /// </summary>
+    /// <param name="result"></param>
+    /// <param name="gold"></param>
     public void CompleteOrder(bool result, int gold)
     {
         if (result)
@@ -85,7 +92,10 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    // sees if all seats are taken, if they are it turns on a bool to prevent feedbackloops
+    /// <summary>
+    /// sees if all seats are taken, if they are it turns on a bool to prevent feedbackloops
+    /// </summary>
+    /// <returns></returns>
     private bool CheckCapacity()
     {
         int takenSeats = 0;
@@ -93,26 +103,19 @@ public class CustomerManager : MonoBehaviour
         for (int i = 0; i < seats.Count; i++)
         {
             Debug.Log(takenSeats);
-            if (ocupation[i] == true)
+            if (isOcupied[i] == true)
             {
                 takenSeats++;
             }
         }
 
-        if (takenSeats == seats.Count)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return takenSeats == seats.Count;
     }
 
     public void Switch()
     {
         select++;
-        if (select == ocupation.Count)
+        if (select == isOcupied.Count)
         {
             select = 0;
         }
