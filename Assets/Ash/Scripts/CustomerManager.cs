@@ -12,6 +12,7 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private GameObject customer;
     [SerializeField] private GameObject beer;
     [SerializeField] private GameObject wine;
+    [SerializeField] private Material[] pick;
     private bool atMax = false;
     private Customers cd;
     private int profit;
@@ -24,7 +25,7 @@ public class CustomerManager : MonoBehaviour
     // define order tags
     private void Start()
     {
-        orderList = new string[2] {"Finish", "Respawn"};
+        orderList = new string[2] {"Beer", "Wine"};
     }
 
     /// <summary>
@@ -50,7 +51,7 @@ public class CustomerManager : MonoBehaviour
         chosenOrder = Random.Range(0, orderList.Length);
         GameObject newCustomer = Instantiate(customer, seats[spot].transform);
         customerFunctions = newCustomer.GetComponent<Customers>();
-        customerFunctions.SetVariables(orderList[chosenOrder], wait, gold, spot, this.gameObject);
+        customerFunctions.SetVariables(orderList[chosenOrder], wait, gold, spot, this.gameObject, plates[spot]);
         people[spot] = newCustomer;
         isOcupied[spot] = true;
 
@@ -102,7 +103,6 @@ public class CustomerManager : MonoBehaviour
 
         for (int i = 0; i < seats.Count; i++)
         {
-            Debug.Log(takenSeats);
             if (isOcupied[i] == true)
             {
                 takenSeats++;
@@ -114,11 +114,15 @@ public class CustomerManager : MonoBehaviour
 
     public void Switch()
     {
+        MeshRenderer selection = people[select].GetComponent<MeshRenderer>();
+        selection.material = pick[0];
         select++;
         if (select == isOcupied.Count)
         {
             select = 0;
         }
+        selection = people[select].GetComponent<MeshRenderer>();
+        selection.material = pick[1];
     }
 
     public void ChangeOrder()
