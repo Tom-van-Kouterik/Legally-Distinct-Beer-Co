@@ -8,20 +8,18 @@ public class CustomerManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> seats = new List<GameObject>();
     [SerializeField] private List<GameObject> plates = new List<GameObject>();
-    [SerializeField] private List<GameObject> people = new List<GameObject>();
+    public List<GameObject> people = new List<GameObject>();
     [SerializeField] private List<bool> isOcupied = new List<bool>() {false, false, false, false};
     [SerializeField] private string[] orderList;
     [SerializeField] private GameObject customer;
     [SerializeField] private GameObject beer;
     [SerializeField] private GameObject wine;
-    [SerializeField] private Material[] pick;
     [SerializeField] private TextMeshProUGUI display;
     private bool atMax = false;
     private int profit;
     private int gold;
     private int wait;
     private int chosenOrder;
-    private bool test;
     private int select;
 
     // define order tags
@@ -112,59 +110,5 @@ public class CustomerManager : MonoBehaviour
         }
 
         return takenSeats == seats.Count;
-    }
-
-    public void Switch()
-    {
-        MeshRenderer selection;
-        if (people[select] != null)
-        {
-            selection = people[select].GetComponent<MeshRenderer>();
-            selection.material = pick[0];           
-        }
-
-        select++;
-        if (select >= people.Count)
-        {
-            select = 0;
-        }
-
-        if (people[select] == null)
-        {
-            return;
-        }
-        else
-        {
-            selection = people[select].GetComponent<MeshRenderer>();
-            selection.material = pick[1];
-        }
-    }
-
-    public void ChangeOrder()
-    {
-        if (test)
-        {
-            test = false;
-            display.text = ("serving: wine");
-        }
-        else
-        {
-            test = true;
-            display.text = ("serving: beer");
-        }
-    }
-    public void Serve()
-    {
-        Customers selectC;
-        selectC = people[select].GetComponent<Customers>();
-
-        if (test)
-        {
-            selectC.CompareOrder(beer);
-        }
-        else if (!test)
-        {
-            selectC.CompareOrder(wine);
-        }
     }
 }
