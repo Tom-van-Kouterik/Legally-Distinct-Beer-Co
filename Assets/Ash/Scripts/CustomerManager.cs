@@ -117,14 +117,10 @@ public class CustomerManager : MonoBehaviour
     public void Switch()
     {
         MeshRenderer selection;
-        if (people[select] == null)
-        {
-
-        }
-        else
+        if (people[select] != null)
         {
             selection = people[select].GetComponent<MeshRenderer>();
-            selection.material = pick[0];
+            selection.material = pick[0];           
         }
 
         select++;
