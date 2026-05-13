@@ -10,24 +10,11 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private List<GameObject> plates = new List<GameObject>();
     public List<GameObject> people = new List<GameObject>();
     [SerializeField] private List<bool> isOcupied = new List<bool>() {false, false, false, false};
-    [SerializeField] private string[] orderList;
     [SerializeField] private GameObject customer;
-    [SerializeField] private GameObject beer;
-    [SerializeField] private GameObject wine;
-    [SerializeField] private TextMeshProUGUI display;
     private bool atMax = false;
     private int profit;
     private int gold;
     private int wait;
-    private int chosenOrder;
-    private int select;
-
-    // define order tags
-    private void Start()
-    {
-        orderList = new string[2] {"Beer", "Wine"};
-    }
-
     /// <summary>
     /// spawn the customer prefab and link it to the seat and plate of the asosiated spot and mark this spot as "taken"
     /// </summary>
@@ -48,10 +35,9 @@ public class CustomerManager : MonoBehaviour
         Customers customerFunctions;
         gold = Random.Range(0, 5);
         wait = Random.Range(0, 5);
-        chosenOrder = Random.Range(0, orderList.Length);
         GameObject newCustomer = Instantiate(customer, seats[spot].transform);
         customerFunctions = newCustomer.GetComponent<Customers>();
-        customerFunctions.SetVariables(orderList[chosenOrder], wait, gold, spot, this.gameObject, plates[spot]);
+        customerFunctions.SetVariables(wait, gold, spot, this.gameObject, plates[spot]);
         people[spot] = newCustomer;
         isOcupied[spot] = true;
 

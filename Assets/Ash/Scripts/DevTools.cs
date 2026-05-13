@@ -40,6 +40,7 @@ public class DevTools : MonoBehaviour
         }
         else
         {
+            highlightedCustomer = manager.people[selected];
             selection = manager.people[selected].GetComponent<MeshRenderer>();
             selection.material = states[1];
         }
@@ -47,8 +48,8 @@ public class DevTools : MonoBehaviour
     //call compare order from customer
     public void Serve()
     {
-        //Customers cScript = highlightedCustomer.GetComponent<Customers>();
-        //cScript.CompareOrder(heldGlass);
+        Customers cScript = highlightedCustomer.GetComponent<Customers>();
+        cScript.CompareOrder(heldGlass);
         Destroy(heldGlass);
     }
     //drink making UI
@@ -100,5 +101,16 @@ public class DevTools : MonoBehaviour
         drinkContentsDisplay[i+2].text = ("glass" + held.drinkTypes[i]);
         }
         Debug.Log("fully cleared");
+    }
+
+    public void MakeOrder()
+    {
+        Customers C = highlightedCustomer.GetComponent<Customers>();
+        C.glass = Random.Range(0,9);
+        C.garnish = Random.Range(0, 9);
+        for (int i = 0;i < 3;i++)
+        {
+            C.drinks[i] = Random.Range(0, 9);
+        }
     }
 }
