@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1877012989029355999}
   m_Layer: 0
   m_Name: Wine
-  m_TagString: Respawn
+  m_TagString: Wine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,20 +13,24 @@ public class Customers : MonoBehaviour
     private GameObject me;
     private MeshRenderer billboard;
     private GameObject bord;
+    [SerializeField] private Material happy;
+    [SerializeField] private Material sad;
     [SerializeField] private Material[] want;
     [SerializeField] private GameObject sign;
 
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)
     {
-        meal.transform.SetParent(bord.transform);
+        //meal.transform.SetParent(bord.transform);
         if (order == meal.tag)
         {
+            billboard.material = happy;
             isCorrect = true;
             StartCoroutine(nameof(Leave));
         }
         else if (order != meal.tag)
         {
+            billboard.material = sad;
             isCorrect = false;
             StartCoroutine(nameof(Leave));
         }

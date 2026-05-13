@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eddd1103559e784b9dd39deea885297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customers
+  happy: {fileID: 2100000, guid: 85679211330ac714eba4e5a0f94f6750, type: 2}
+  sad: {fileID: 2100000, guid: 170cebb579ad9e24e8d792bc6bdb997a, type: 2}
   want:
   - {fileID: 2100000, guid: 2e3d140c809c396448a46b9dcd6a1ad2, type: 2}
   - {fileID: 2100000, guid: 955a01ffc647f554aad29ab2cda8ef96, type: 2}

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
@@ -13,8 +15,8 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private GameObject beer;
     [SerializeField] private GameObject wine;
     [SerializeField] private Material[] pick;
+    [SerializeField] private TextMeshProUGUI display;
     private bool atMax = false;
-    private Customers cd;
     private int profit;
     private int gold;
     private int wait;
@@ -114,15 +116,32 @@ public class CustomerManager : MonoBehaviour
 
     public void Switch()
     {
-        MeshRenderer selection = people[select].GetComponent<MeshRenderer>();
-        selection.material = pick[0];
+        MeshRenderer selection;
+        if (people[select] == null)
+        {
+
+        }
+        else
+        {
+            selection = people[select].GetComponent<MeshRenderer>();
+            selection.material = pick[0];
+        }
+
         select++;
-        if (select == isOcupied.Count)
+        if (select >= people.Count)
         {
             select = 0;
         }
-        selection = people[select].GetComponent<MeshRenderer>();
-        selection.material = pick[1];
+
+        if (people[select] == null)
+        {
+            return;
+        }
+        else
+        {
+            selection = people[select].GetComponent<MeshRenderer>();
+            selection.material = pick[1];
+        }
     }
 
     public void ChangeOrder()
@@ -130,10 +149,12 @@ public class CustomerManager : MonoBehaviour
         if (test)
         {
             test = false;
+            display.text = ("serving: wine");
         }
         else
         {
             test = true;
+            display.text = ("serving: beer");
         }
     }
     public void Serve()
