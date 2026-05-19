@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class Customers : MonoBehaviour
@@ -7,28 +8,25 @@ public class Customers : MonoBehaviour
     public int glass;
     public int garnish;
     public int[] drinks;
-    private CustomerManager manager;
     private int seatNumber;
     private int delay;
     private int money;
+    private int glassSize;
+    private float patience;
     private bool isCorrect;
     private GameObject me;
-    private MeshRenderer billboard;
     private GameObject bord;
+    private CustomerManager manager;
+    public OrderUI visuals;
     [SerializeField] private Material happy;
     [SerializeField] private Material sad;
     [SerializeField] private Material[] want;
-    [SerializeField] private GameObject sign;
-
-    private void Awake()
-    {
-        drinks = new int[4];
-    }
 
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)
     {
-        //meal.transform.SetParent(bord.transform);
+        meal.transform.SetParent(bord.transform);
+        meal.transform.position = meal.transform.parent.position;
         TestMug order = meal.GetComponent<TestMug>();
         if (glass != order.glassType)
         {
@@ -52,35 +50,46 @@ public class Customers : MonoBehaviour
         StartCoroutine(nameof(Leave));
     }
 
-    //primitive way to show what the customer wants. will be updated
-    private void DisplayOrder()
-    {
-        //needs updating with the ned gameplay
-    }
-
     // gets called when a new customer is created to give them their random variables
-    public void SetVariables(int time, int gain, int stool, GameObject cm, GameObject plate)
+    public void SetVariables(int stool, CustomerManager cm, GameObject plate)
     {
-        billboard = sign.GetComponent<MeshRenderer>();
+        visuals = GetComponent<OrderUI>();
         glass = Random.Range(0, 9);
-        garnish = Random.Range(0, 9);
-        for (int i = 0; i < 3; i++)
+        if (glass <= 3)
         {
-            drinks[i] = Random.Range(0, 9);
+            glassSize = 4;
         }
-        delay = time;
-        money = gain;
+        else if (glass > 3 && glass <= 6)
+        {
+            glassSize = 5;
+        }
+        else
+        {
+            glassSize = 6;
+        }
+        money = Random.Range(0, 10);
+        patience = Random.Range(0, 10);
+        delay = Random.Range(5, 10);
+        garnish = Random.Range(0, 9);
+        drinks = new int[glassSize];
+        for (int i = 0; i < glassSize; i++)
+        {
+            drinks[i] = 3 + i;
+        }
+        //Array.Sort(drinks);
         seatNumber = stool;
-        manager = cm.GetComponent<CustomerManager>();
+        manager = cm;
         me = this.gameObject;
         bord = plate;
+        visuals.DisplayOrder(glassSize, glass, garnish, drinks);
     }
 
     IEnumerator Leave()
     {
-        manager.CompleteOrder(isCorrect, money);
-        yield return new WaitForSecondsRealtime(delay);
+        manager.CompleteOrder(isCorrect);
+        yield return new WaitForSeconds(delay);
         manager.DestroyCustomer(seatNumber);
+        Destroy(bord.transform.GetChild(0).gameObject);
         Destroy(me);
     }
 }

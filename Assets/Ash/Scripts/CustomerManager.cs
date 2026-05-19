@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,13 +7,16 @@ public class CustomerManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> seats = new List<GameObject>();
     [SerializeField] private List<GameObject> plates = new List<GameObject>();
-    public List<GameObject> people = new List<GameObject>();
+    [SerializeField] public List<GameObject> people = new List<GameObject>();
     [SerializeField] private List<bool> isOcupied = new List<bool>() {false, false, false, false};
     [SerializeField] private GameObject customer;
+    private CustomerManager script;
     private bool atMax = false;
-    private int profit;
-    private int gold;
-    private int wait;
+
+    private void Awake()
+    {
+        script = GetComponent<CustomerManager>();
+    }
     /// <summary>
     /// spawn the customer prefab and link it to the seat and plate of the asosiated spot and mark this spot as "taken"
     /// </summary>
@@ -33,11 +35,9 @@ public class CustomerManager : MonoBehaviour
         }
 
         Customers customerFunctions;
-        gold = Random.Range(0, 5);
-        wait = Random.Range(0, 5);
         GameObject newCustomer = Instantiate(customer, seats[spot].transform);
         customerFunctions = newCustomer.GetComponent<Customers>();
-        customerFunctions.SetVariables(wait, gold, spot, this.gameObject, plates[spot]);
+        customerFunctions.SetVariables(spot, script, plates[spot]);
         people[spot] = newCustomer;
         isOcupied[spot] = true;
 
@@ -67,16 +67,9 @@ public class CustomerManager : MonoBehaviour
     /// </summary>
     /// <param name="result"></param>
     /// <param name="gold"></param>
-    public void CompleteOrder(bool result, int gold)
+    public void CompleteOrder(bool result)
     {
-        if (result)
-        {
-            profit += gold;
-        }
-        else if (!result)
-        {
-            profit -= gold;
-        }
+        Debug.Log(result);
     }
 
     /// <summary>

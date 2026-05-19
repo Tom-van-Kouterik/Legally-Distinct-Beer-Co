@@ -50,7 +50,6 @@ public class DevTools : MonoBehaviour
     {
         Customers cScript = highlightedCustomer.GetComponent<Customers>();
         cScript.CompareOrder(heldGlass);
-        Destroy(heldGlass);
     }
     //drink making UI
     public void SwitchUI()
