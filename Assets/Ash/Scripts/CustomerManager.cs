@@ -65,8 +65,6 @@ public class CustomerManager : MonoBehaviour
     /// <summary>
     /// either add or remove gold from gold total depending on order completion
     /// </summary>
-    /// <param name="result"></param>
-    /// <param name="gold"></param>
     public void CompleteOrder(bool result)
     {
         Debug.Log(result);

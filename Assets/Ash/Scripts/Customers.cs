@@ -1,7 +1,8 @@
-using System.Collections;
+using System;
 using Unity.VisualScripting;
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class Customers : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class Customers : MonoBehaviour
     public void SetVariables(int stool, CustomerManager cm, GameObject plate)
     {
         visuals = GetComponent<OrderUI>();
-        glass = Random.Range(0, 9);
+        glass = UnityEngine.Random.Range(0, 9);
         if (glass <= 3)
         {
             glassSize = 4;
@@ -67,16 +68,16 @@ public class Customers : MonoBehaviour
         {
             glassSize = 6;
         }
-        money = Random.Range(0, 10);
-        patience = Random.Range(0, 10);
-        delay = Random.Range(5, 10);
-        garnish = Random.Range(0, 9);
+        money = UnityEngine.Random.Range(0, 9);
+        patience = UnityEngine.Random.Range(0, 10);
+        delay = UnityEngine.Random.Range(5, 10);
+        garnish = UnityEngine.Random.Range(0, 9);
         drinks = new int[glassSize];
         for (int i = 0; i < glassSize; i++)
         {
-            drinks[i] = 3 + i;
+            drinks[i] = UnityEngine.Random.Range(0, 9);
         }
-        //Array.Sort(drinks);
+        Array.Sort(drinks);
         seatNumber = stool;
         manager = cm;
         me = this.gameObject;
