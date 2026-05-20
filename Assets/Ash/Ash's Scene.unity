@@ -260,7 +260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &21362472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -725,7 +725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &252743985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -914,7 +914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &345648899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1481,7 +1481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &622925279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: add liquid
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4137,7 +4137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: set garnish
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5041,7 +5041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1717062545
 Transform:
   m_ObjectHideFlags: 0
@@ -5353,7 +5353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1812223413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5781,7 +5781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1819829789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5974,7 +5974,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5205890111881117671, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
-      propertyPath: empty
+      propertyPath: visuals.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -5205890111881117671, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
+      propertyPath: 'visuals.Array.data[10]'
       value: 
       objectReference: {fileID: 2100000, guid: 6e6d4cb5cf866be418b8471b0227af65, type: 2}
     - target: {fileID: 139031870689360236, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
@@ -5983,7 +5987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 767336054273729494, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.067923
+      value: -1.68
       objectReference: {fileID: 0}
     - target: {fileID: 767336054273729494, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5991,7 +5995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 767336054273729494, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.2404013
+      value: -7.48
       objectReference: {fileID: 0}
     - target: {fileID: 767336054273729494, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6083,7 +6087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: set glass size
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6769,7 +6773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2092514826
 RectTransform:
   m_ObjectHideFlags: 0

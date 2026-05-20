@@ -265,6 +265,7 @@ MonoBehaviour:
   glassType: 0
   garnishType: 0
   drinkTypes: 
+  empty: {fileID: 2100000, guid: 6e6d4cb5cf866be418b8471b0227af65, type: 2}
   contents: []
   visuals:
   - {fileID: 2100000, guid: 9fcd072aacd86fb45bedb2d54fb1870a, type: 2}

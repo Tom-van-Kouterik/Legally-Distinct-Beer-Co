@@ -19,6 +19,7 @@ public class TestMug : MonoBehaviour
     [SerializeField] private GameObject garnish;
     [SerializeField] private GameObject cell;
     [SerializeField] private GameObject canvas;
+
     public void SetSize(int glass)
     {
         if (glass >= 10 || sizeSet)
@@ -53,6 +54,7 @@ public class TestMug : MonoBehaviour
         {
             return;
         }
+
         drinkTypes[counter] = type;
         UpdateCells();
         counter++;
@@ -61,16 +63,9 @@ public class TestMug : MonoBehaviour
     private void UpdateCells()
     {
         Array.Sort(drinkTypes);
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < drinkTypes.Length; i++)
         {
-            if (drinkTypes[i] == 10)
-            {
-                contents[i].GetComponent<Image>().material = empty;
-            }
-            else
-            {
             contents[i].GetComponent<Image>().material = visuals[drinkTypes[i]];
-            }
         }
     }
 

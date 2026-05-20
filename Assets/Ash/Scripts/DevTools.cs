@@ -81,7 +81,6 @@ public class DevTools : MonoBehaviour
     //drink making logic
     public void SetContents()
     {
-        Debug.Log("works");
         if (heldGlass == null)
         {
             return;
