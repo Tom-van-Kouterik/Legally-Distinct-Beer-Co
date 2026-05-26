@@ -17,7 +17,7 @@ public class Customers : MonoBehaviour
     private bool isCorrect;
     private GameObject me;
     private GameObject bord;
-    private CustomerManager manager;
+    private GameObject manager;
     public OrderUI visuals;
     [SerializeField] private Material happy;
     [SerializeField] private Material sad;
@@ -52,7 +52,7 @@ public class Customers : MonoBehaviour
     }
 
     // gets called when a new customer is created to give them their random variables
-    public void SetVariables(int stool, CustomerManager cm, GameObject plate)
+    public void SetVariables(int stool, GameObject cm, GameObject plate)
     {
         visuals = GetComponent<OrderUI>();
         glass = UnityEngine.Random.Range(0, 9);
@@ -87,9 +87,9 @@ public class Customers : MonoBehaviour
 
     IEnumerator Leave()
     {
-        manager.CompleteOrder(isCorrect);
+        manager.GetComponent<CustomerManager>().CompleteOrder(isCorrect);
         yield return new WaitForSeconds(delay);
-        manager.DestroyCustomer(seatNumber);
+        manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
         Destroy(bord.transform.GetChild(0).gameObject);
         Destroy(me);
     }

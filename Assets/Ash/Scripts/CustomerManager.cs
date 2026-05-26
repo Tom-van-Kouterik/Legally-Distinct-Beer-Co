@@ -10,13 +10,8 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] public List<GameObject> people = new List<GameObject>();
     [SerializeField] private List<bool> isOcupied = new List<bool>() {false, false, false, false};
     [SerializeField] private GameObject customer;
-    private CustomerManager script;
     private bool atMax = false;
 
-    private void Awake()
-    {
-        script = GetComponent<CustomerManager>();
-    }
     /// <summary>
     /// spawn the customer prefab and link it to the seat and plate of the asosiated spot and mark this spot as "taken"
     /// </summary>
@@ -37,7 +32,7 @@ public class CustomerManager : MonoBehaviour
         Customers customerFunctions;
         GameObject newCustomer = Instantiate(customer, seats[spot].transform);
         customerFunctions = newCustomer.GetComponent<Customers>();
-        customerFunctions.SetVariables(spot, script, plates[spot]);
+        customerFunctions.SetVariables(spot, gameObject, plates[spot]);
         people[spot] = newCustomer;
         isOcupied[spot] = true;
 

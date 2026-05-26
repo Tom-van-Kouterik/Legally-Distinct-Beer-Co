@@ -2,23 +2,28 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using NUnit.Framework;
+using System.Collections;
 
 public class DevTools : MonoBehaviour
 {
     private int selected;
     private GameObject highlightedCustomer;
     private GameObject heldGlass;
+    [SerializeField] private Slider glassValue;
+    [SerializeField] private Slider drinkValue;
+    [SerializeField] private Slider garnishValue;
+    private TestMug data;
     [SerializeField] private Material[] states;
-    [SerializeField] private TextMeshProUGUI[] drinkContentsDisplay;
-    [SerializeField] private TMP_InputField[] values;
     [SerializeField] private GameObject glassPrefab;
     [SerializeField] private CustomerManager manager;
-    [SerializeField] private GameObject basicUI;
-    [SerializeField] private GameObject drinkUI;
     [SerializeField] private GameObject glassSpawn;
-    private bool isMenuOpen = false;
 
     //copy customer selection/switch
+
+    private void Awake()
+    {
+        StartCoroutine(nameof(Spawn));
+    }
     public void Switch()
     {
         MeshRenderer selection;
@@ -50,65 +55,42 @@ public class DevTools : MonoBehaviour
     {
         Customers cScript = highlightedCustomer.GetComponent<Customers>();
         cScript.CompareOrder(heldGlass);
-    }
-    //drink making UI
-    public void SwitchUI()
-    {
-        if (isMenuOpen)
-        {
-            drinkUI.SetActive(false);
-            basicUI.SetActive(true);
-            isMenuOpen = false;
-        }
-        else
-        {
-            drinkUI.SetActive(true);
-            basicUI.SetActive(false);
-            isMenuOpen = true;
-        }
+        heldGlass = null;
     }
 
     //spawning glass
     public void SpawnGlass()
     {
-        if (heldGlass != null)
+        if (heldGlass != null || ((int)glassValue.value) >= 10)
         {
             return;
         }
         heldGlass = Instantiate(glassPrefab, glassSpawn.transform);
+        data = heldGlass.GetComponent<TestMug>();
+        data.SetSize((int)glassValue.value);
     }
-
-    //drink making logic
-    public void SetContents()
+    public void AddDrink()
     {
-        if (heldGlass == null)
+        if (heldGlass == null || ((int)drinkValue.value) >= 10)
         {
             return;
         }
-        TestMug held = heldGlass.GetComponent<TestMug>();
-        held.glassType = int.Parse(values[0].text);
-        held.garnishType = int.Parse(values[1].text);
-        for (int i = 0; i < int.Parse(values[2].text); i++)
-        {
-            held.drinkTypes[i] = int.Parse(values[3].text);
-        }
-        drinkContentsDisplay[0].text = ("glass" + held.glassType);
-        drinkContentsDisplay[1].text = ("garnish" + held.garnishType);
-        for (int i = 0; i < held.drinkTypes.Length; i++)
-        {
-        drinkContentsDisplay[i+2].text = ("glass" + held.drinkTypes[i]);
-        }
-        Debug.Log("fully cleared");
+        data.AddDrink((int)drinkValue.value);
     }
 
-    public void MakeOrder()
+    public void AddGarnish()
     {
-        Customers C = highlightedCustomer.GetComponent<Customers>();
-        C.glass = Random.Range(0,9);
-        C.garnish = Random.Range(0, 9);
-        for (int i = 0;i < 3;i++)
+        if (heldGlass == null || ((int)garnishValue.value) >= 10)
         {
-            C.drinks[i] = Random.Range(0, 9);
+            return;
         }
+        data.AddGarnish((int)garnishValue.value);
+    }
+
+    IEnumerator Spawn()
+    {
+        manager.SpawnCustomer();
+        yield return new WaitForSeconds(10);
+        StartCoroutine(nameof(Spawn));
     }
 }

@@ -13,7 +13,6 @@ public class TestMug : MonoBehaviour
     public int[] drinkTypes;
     private int counter = 0;
     private int size;
-    [SerializeField] private Material empty;
     [SerializeField] private GameObject[] contents;
     [SerializeField] private Material[] visuals;
     [SerializeField] private GameObject garnish;
@@ -44,7 +43,7 @@ public class TestMug : MonoBehaviour
         {
             drinkTypes[i] = 10;
         }
-        spawnCells();
+        SpawnCells();
         sizeSet = true;
     }
 
@@ -80,12 +79,12 @@ public class TestMug : MonoBehaviour
         isDecorated = true;
     }
 
-    private void spawnCells()
+    private void SpawnCells()
     {
         contents = new GameObject[size];
         GameObject selected;
         RectTransform UISpace;
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < drinkTypes.Length; i++)
         {
             selected = Instantiate(cell, canvas.transform, true);
             selected.transform.localScale = canvas.transform.localScale;
@@ -95,5 +94,4 @@ public class TestMug : MonoBehaviour
         }
         UpdateCells();
     }
-
 }

@@ -278,6 +278,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 29e286766f3dd7b4f8b59474d21b7bf9, type: 2}
   - {fileID: 2100000, guid: a7f605d4542756a4ab81a3d389c083bf, type: 2}
   - {fileID: 2100000, guid: 12ceed295859f3043a8e0d267fa8f8ab, type: 2}
+  - {fileID: 2100000, guid: 6e6d4cb5cf866be418b8471b0227af65, type: 2}
   garnish: {fileID: 665408311393203020}
   cell: {fileID: 3609366286191009575, guid: 0b77625cfc7166647a70ec5ab451231f, type: 3}
   canvas: {fileID: 8949489915459749989}

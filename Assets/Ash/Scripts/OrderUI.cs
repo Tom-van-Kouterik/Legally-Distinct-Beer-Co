@@ -19,8 +19,9 @@ public class OrderUI : MonoBehaviour
         for (int i = 0; i < volume; i++)
         {
             selected = Instantiate(cell,canvas.transform,true);
+            selected.transform.localScale = canvas.transform.localScale;
             UISpace = selected.GetComponent<RectTransform>();
-            UISpace.transform.localPosition = new Vector3(0, (0.25f * i), 0);
+            UISpace.transform.localPosition = new Vector3(0, (0.25f / 2 * i), 0);
             contents[i] = selected;
             cellVisual = contents[i].GetComponent<Image>();
             cellVisual.material = visuals[liquids[i]];
