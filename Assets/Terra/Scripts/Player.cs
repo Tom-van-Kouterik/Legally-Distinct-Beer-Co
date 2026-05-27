@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private GameObject handObj;
     [SerializeField]
     private GameObject heldItem;
+    private GameObject interactedIngredient;
     LayerMask layerMask;
 
     /// <summary>
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void Start()
     {
-        layerMask = LayerMask.GetMask("Holdable", "Trashcan", "Customer");  
+        layerMask = LayerMask.GetMask("Holdable", "Trashcan", "Customer", "Ingredient");  
         myCam = Camera.main;
     }
 
@@ -91,6 +92,21 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(myCam.transform.position, transform.forward, out hit, Mathf.Infinity, customer))
             {
                 
+            }
+
+            LayerMask ingredient = LayerMask.GetMask("Ingredient");
+            if (Physics.Raycast(myCam.transform.position, transform.forward, out hit, Mathf.Infinity, ingredient))
+            {
+                Ingredient interactedIngredient = hit.collider.gameObject.GetComponent<Ingredient>();
+                DrinkLogic glassScript = heldItem.GetComponent<DrinkLogic>();
+                if (handIsFull)
+                {
+                    if (glassScript.heldIngredients.Count >= glassScript.maxSize)
+                    {
+                        return;
+                    }
+                    heldItem.GetComponent<DrinkLogic>().heldIngredients.Add(interactedIngredient.ingredientNumber);
+                }         
             }
         }
     }
