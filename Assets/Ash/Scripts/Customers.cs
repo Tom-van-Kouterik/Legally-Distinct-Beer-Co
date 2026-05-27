@@ -14,7 +14,8 @@ public class Customers : MonoBehaviour
     private int money;
     private int glassSize;
     private float patience;
-    private bool isCorrect;
+    private bool isCorrect = false;
+    private bool isDone = false;
     private GameObject me;
     private GameObject bord;
     private GameObject manager;
@@ -23,6 +24,19 @@ public class Customers : MonoBehaviour
     [SerializeField] private Material sad;
     [SerializeField] private Material[] want;
 
+
+    private void Update()
+    {
+        if (patience >= 0)
+        {
+            patience -= Time.deltaTime;
+        }
+        else if (!isDone && patience <= 0)
+        {
+            StartCoroutine(nameof(Leave));
+            isDone = true;
+        }
+    }
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)
     {
@@ -48,6 +62,7 @@ public class Customers : MonoBehaviour
             }
         }
         isCorrect = true;
+        isDone = true;
         StartCoroutine(nameof(Leave));
     }
 
@@ -68,8 +83,8 @@ public class Customers : MonoBehaviour
         {
             glassSize = 6;
         }
-        money = UnityEngine.Random.Range(0, 9);
-        patience = UnityEngine.Random.Range(0, 10);
+        money = UnityEngine.Random.Range(20, 30);
+        patience = UnityEngine.Random.Range(5, 10);
         delay = UnityEngine.Random.Range(5, 10);
         garnish = UnityEngine.Random.Range(0, 9);
         drinks = new int[glassSize];
@@ -87,10 +102,22 @@ public class Customers : MonoBehaviour
 
     IEnumerator Leave()
     {
-        manager.GetComponent<CustomerManager>().CompleteOrder(isCorrect);
+        if (isCorrect)
+        {
+            manager.GetComponent<CustomerManager>().CompleteOrder(money);
+        }
+        else
+        {
+            manager.GetComponent<CustomerManager>().CompleteOrder(0);
+        }
+
         yield return new WaitForSeconds(delay);
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
-        Destroy(bord.transform.GetChild(0).gameObject);
         Destroy(me);
+        if (isDone && !isCorrect)
+        {
+            yield break;
+        }
+        Destroy(bord.transform.GetChild(0).gameObject);
     }
 }

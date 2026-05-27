@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> seats = new List<GameObject>();
-    [SerializeField] private List<GameObject> plates = new List<GameObject>();
-    [SerializeField] public List<GameObject> people = new List<GameObject>();
-    [SerializeField] private List<bool> isOcupied = new List<bool>() {false, false, false, false};
+    [SerializeField] private List<GameObject> seats = new();
+    [SerializeField] private List<GameObject> plates = new();
+    [SerializeField] public List<GameObject> people = new();
+    [SerializeField] private List<bool> isOcupied = new() {false, false, false, false};
     [SerializeField] private GameObject customer;
     private bool atMax = false;
 
@@ -60,9 +60,9 @@ public class CustomerManager : MonoBehaviour
     /// <summary>
     /// either add or remove gold from gold total depending on order completion
     /// </summary>
-    public void CompleteOrder(bool result)
+    public void CompleteOrder(int profit)
     {
-        Debug.Log(result);
+        Debug.Log(profit);
     }
 
     /// <summary>
