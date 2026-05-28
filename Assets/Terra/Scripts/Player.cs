@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (context.performed)
         {
+            Debug.Log("Test");
             //creates 3 local variables for each mask that only holds the specified layer and shoots a ray to check if it hit that layer
             //it checks if the player is holding an item, if so it does nothing if not it puts the hit gameobject into the players hand
             LayerMask holdable = LayerMask.GetMask("Holdable");

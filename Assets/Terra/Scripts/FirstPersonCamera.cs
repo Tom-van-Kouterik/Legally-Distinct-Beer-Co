@@ -25,13 +25,11 @@ public class FirstPersonCamera : MonoBehaviour
         {
             mouseInputX = _context.ReadValue<Vector2>().x / 25;
             mouseInputY = _context.ReadValue<Vector2>().y / 25;
-            Debug.Log(mouseInputX);
-            Debug.Log(mouseInputY);
         }
     }
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.45f, player.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         float mouseX = mouseInputX * Time.deltaTime * xSen;
         float mouseY = mouseInputY * Time.deltaTime * ySen;
         mouseInputX = 0;
