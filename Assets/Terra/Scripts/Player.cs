@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private Camera myCam;
     public Vector3 movementInput = Vector3.zero;
     public float movementSpeed;
-
+    private Rigidbody rb;
     [SerializeField]
     private bool handIsFull = false;
     [SerializeField]
@@ -26,15 +26,16 @@ public class Player : MonoBehaviour
     {
         layerMask = LayerMask.GetMask("Holdable", "Trashcan", "Customer", "Ingredient");  
         myCam = Camera.main;
+        rb = GetComponent<Rigidbody>();
     }
 
     /// <summary>
     /// Creates a new Vector3 called move and calculates the speed at wich it moves and then moves the player
     /// </summary>
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * movementSpeed;
-        transform.position = transform.position + move;
+        Vector3 move = rb.position + transform.TransformDirection(movementInput.x, 0, movementInput.y).normalized * movementSpeed;
+        rb.MovePosition(move);
     }
 
     /// <summary>
