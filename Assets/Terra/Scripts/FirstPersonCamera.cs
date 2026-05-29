@@ -29,7 +29,7 @@ public class FirstPersonCamera : MonoBehaviour
     }
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x, 2, player.transform.position.z);
         float mouseX = mouseInputX * Time.deltaTime * xSen;
         float mouseY = mouseInputY * Time.deltaTime * ySen;
         mouseInputX = 0;
