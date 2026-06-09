@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Customers : MonoBehaviour
 {
@@ -20,9 +21,9 @@ public class Customers : MonoBehaviour
     private GameObject bord;
     private GameObject manager;
     public OrderUI visuals;
+    [SerializeField] private Slider timer;
     [SerializeField] private Material happy;
     [SerializeField] private Material sad;
-    [SerializeField] private Material[] want;
 
 
     private void Update()
@@ -30,6 +31,7 @@ public class Customers : MonoBehaviour
         if (patience >= 0)
         {
             patience -= Time.deltaTime;
+            timer.value = patience;
         }
         else if (!isDone && patience <= 0)
         {
@@ -85,6 +87,7 @@ public class Customers : MonoBehaviour
         }
         money = UnityEngine.Random.Range(20, 30);
         patience = UnityEngine.Random.Range(5, 10);
+        timer.maxValue = (int)patience;
         delay = UnityEngine.Random.Range(5, 10);
         garnish = UnityEngine.Random.Range(0, 9);
         drinks = new int[glassSize];
