@@ -1,6 +1,4 @@
 using System;
-using Unity.VisualScripting;
-using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -35,7 +33,7 @@ public class Customers : MonoBehaviour
         }
         else if (!isDone && patience <= 0)
         {
-            StartCoroutine(nameof(Leave));
+            //StartCoroutine(nameof(Leave));
             isDone = true;
         }
     }
@@ -107,7 +105,7 @@ public class Customers : MonoBehaviour
     {
         if (isCorrect)
         {
-            manager.GetComponent<CustomerManager>().CompleteOrder(money);
+            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
         }
         else
         {
