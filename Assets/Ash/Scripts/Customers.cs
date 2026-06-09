@@ -33,7 +33,7 @@ public class Customers : MonoBehaviour
         }
         else if (!isDone && patience <= 0)
         {
-            //StartCoroutine(nameof(Leave));
+            StartCoroutine(nameof(Leave));
             isDone = true;
         }
     }
@@ -66,7 +66,7 @@ public class Customers : MonoBehaviour
         StartCoroutine(nameof(Leave));
     }
 
-    // gets called when a new customer is created to give them their random variables
+    // gets called when a new customer is created to give them their random variables and asign relevant data
     public void SetVariables(int stool, GameObject cm, GameObject plate)
     {
         visuals = GetComponent<OrderUI>();

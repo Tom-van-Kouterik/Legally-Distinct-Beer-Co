@@ -60,7 +60,7 @@ public class CustomerManager : MonoBehaviour
     /// </summary>
     public void CompleteOrder(int profit)
     {
-        Debug.Log(profit);
+        //placeholder function
     }
 
     /// <summary>
