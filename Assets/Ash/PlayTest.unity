@@ -527,17 +527,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3828117115031584418, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
   m_PrefabInstance: {fileID: 1388847348}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &158357867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6668649519207797178, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-  m_PrefabInstance: {fileID: 1388847348}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e53312c35d64241a6c3ed166f12a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::slidervisuals
 --- !u!114 &158357868 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
@@ -645,14 +634,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 720223251}
-    - target: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: VisualUpdate
-      objectReference: {fileID: 0}
     - target: {fileID: 8370256768665920914, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -757,14 +738,6 @@ PrefabInstance:
     - target: {fileID: 3828117115031584418, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2046795471}
-    - target: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: VisualUpdate
       objectReference: {fileID: 0}
     - target: {fileID: 8370256768665920914, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1191,17 +1164,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3828117115031584418, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
   m_PrefabInstance: {fileID: 296724553}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &720223251 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6668649519207797178, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-  m_PrefabInstance: {fileID: 296724553}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e53312c35d64241a6c3ed166f12a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::slidervisuals
 --- !u!114 &720223252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
@@ -1893,14 +1855,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 158357867}
-    - target: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: VisualUpdate
-      objectReference: {fileID: 0}
     - target: {fileID: 8370256768665920914, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2522,6 +2476,34 @@ PrefabInstance:
       propertyPath: 'plates.Array.data[3]'
       value: 
       objectReference: {fileID: 2141040332}
+    - target: {fileID: 8585562557486183522, guid: 2bb4626e018c2da448437a36ed05cdd7, type: 3}
+      propertyPath: 'drinkAcces.Array.data[0]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585562557486183522, guid: 2bb4626e018c2da448437a36ed05cdd7, type: 3}
+      propertyPath: 'drinkAcces.Array.data[2]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585562557486183522, guid: 2bb4626e018c2da448437a36ed05cdd7, type: 3}
+      propertyPath: 'drinkAcces.Array.data[5]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585562557486183522, guid: 2bb4626e018c2da448437a36ed05cdd7, type: 3}
+      propertyPath: 'glassAcces.Array.data[2]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585562557486183522, guid: 2bb4626e018c2da448437a36ed05cdd7, type: 3}
+      propertyPath: 'glassAcces.Array.data[4]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585562557486183522, guid: 2bb4626e018c2da448437a36ed05cdd7, type: 3}
+      propertyPath: 'garnishAcces.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585562557486183522, guid: 2bb4626e018c2da448437a36ed05cdd7, type: 3}
+      propertyPath: 'garnishAcces.Array.data[2]'
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2711,17 +2693,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3828117115031584418, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
   m_PrefabInstance: {fileID: 337318637}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2046795471 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6668649519207797178, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}
-  m_PrefabInstance: {fileID: 337318637}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e53312c35d64241a6c3ed166f12a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::slidervisuals
 --- !u!114 &2046795472 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5444394758422052263, guid: 03ff1ff353d82cd479763e04495cd250, type: 3}

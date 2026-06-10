@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Customers : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class Customers : MonoBehaviour
     private int seatNumber;
     private int delay;
     private int money;
-    private int glassSize;
     private float patience;
     private bool isCorrect = false;
     private bool isDone = false;
@@ -67,38 +67,26 @@ public class Customers : MonoBehaviour
     }
 
     // gets called when a new customer is created to give them their random variables and asign relevant data
-    public void SetVariables(int stool, GameObject cm, GameObject plate)
+    public void SetVariables(int stool, GameObject cm, GameObject plate, int glassValue, int garnishValue, List<int> drinkValues)
     {
         visuals = GetComponent<OrderUI>();
-        glass = UnityEngine.Random.Range(0, 9);
-        if (glass <= 3)
-        {
-            glassSize = 4;
-        }
-        else if (glass > 3 && glass <= 6)
-        {
-            glassSize = 5;
-        }
-        else
-        {
-            glassSize = 6;
-        }
+        glass = glassValue;
         money = UnityEngine.Random.Range(20, 30);
         patience = UnityEngine.Random.Range(5, 10);
         timer.maxValue = (int)patience;
         delay = UnityEngine.Random.Range(5, 10);
-        garnish = UnityEngine.Random.Range(0, 9);
-        drinks = new int[glassSize];
-        for (int i = 0; i < glassSize; i++)
+        garnish = garnishValue;
+        drinks = new int[drinkValues.Count];
+        for (int i = 0; i < drinkValues.Count; i++)
         {
-            drinks[i] = UnityEngine.Random.Range(0, 9);
+            drinks[i] = drinkValues[i];
         }
         Array.Sort(drinks);
         seatNumber = stool;
         manager = cm;
         me = this.gameObject;
         bord = plate;
-        visuals.DisplayOrder(glassSize, glass, garnish, drinks);
+        visuals.DisplayOrder(drinkValues.Count, glass, garnish, drinks);
     }
 
     IEnumerator Leave()

@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 807291843169134382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e53312c35d64241a6c3ed166f12a28, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f0c85fe6ca45cf4384f740c73bd531e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::slidervisuals
   plane: {fileID: 2993637987180208900}
