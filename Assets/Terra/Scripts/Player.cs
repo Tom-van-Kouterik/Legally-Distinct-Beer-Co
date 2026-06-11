@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     private GameObject handObj;
     [SerializeField]
     private GameObject heldItem;
+    [SerializeField] private GameObject glass;
     private GameObject interactedIngredient;
     LayerMask layerMask;
 
@@ -67,21 +69,22 @@ public class Player : MonoBehaviour
             //creates 3 local variables for each mask that only holds the specified layer and shoots a ray to check if it hit that layer
             //it checks if the player is holding an item, if so it does nothing if not it puts the hit gameobject into the players hand
             LayerMask holdable = LayerMask.GetMask("Holdable");
-            if(Physics.Raycast(myCam.transform.position, transform.forward, out hit, Mathf.Infinity, holdable))
+            if(Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, holdable))
             {
                 if (handIsFull)
                 {
                     return;
                 }
-                heldItem = hit.collider.gameObject;
+                heldItem = Instantiate(glass);
                 heldItem.transform.parent = handObj.transform;
-                heldItem.transform.position = handObj.transform.position;   
+                heldItem.transform.position = handObj.transform.position;
+                heldItem.GetComponent<TestMug>().SetSize(hit.collider.GetComponent<Ingredient>().ingredientNumber);
                 handIsFull = true;
             }
             
             //if the player is holding an item and interacts with the trashcan layer it destroys the held object and empties the hand
             LayerMask trashcan = LayerMask.GetMask("Trashcan"); 
-            if (Physics.Raycast(myCam.transform.position, transform.forward, out hit, Mathf.Infinity, trashcan))
+            if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, trashcan))
             {
                 if (handIsFull)
                 {
@@ -91,23 +94,29 @@ public class Player : MonoBehaviour
             }
             
             LayerMask customer = LayerMask.GetMask("Customer");
-            if (Physics.Raycast(myCam.transform.position, transform.forward, out hit, Mathf.Infinity, customer))
+            if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, customer))
             {
-                
+                if (handIsFull)
+                {
+                    hit.collider.GetComponent<Customers>().CompareOrder(heldItem);
+                    handIsFull = false;
+                }
             }
 
             LayerMask ingredient = LayerMask.GetMask("Ingredient");
-            if (Physics.Raycast(myCam.transform.position, transform.forward, out hit, Mathf.Infinity, ingredient))
+            if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, ingredient))
             {
                 Ingredient interactedIngredient = hit.collider.gameObject.GetComponent<Ingredient>();
-                DrinkLogic glassScript = heldItem.GetComponent<DrinkLogic>();
                 if (handIsFull)
                 {
-                    if (glassScript.heldIngredients.Count >= glassScript.maxSize)
+                    if (interactedIngredient.isDrink)
                     {
-                        return;
+                        heldItem.GetComponent<TestMug>().AddDrink(hit.collider.GetComponent<Ingredient>().ingredientNumber);
                     }
-                    heldItem.GetComponent<DrinkLogic>().heldIngredients.Add(interactedIngredient.ingredientNumber);
+                    else
+                    {
+                        heldItem.GetComponent<TestMug>().AddGarnish(hit.collider.GetComponent<Ingredient>().ingredientNumber);
+                    }
                 }         
             }
         }

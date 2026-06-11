@@ -15,6 +15,7 @@ public class Customers : MonoBehaviour
     private float patience;
     private bool isCorrect = false;
     private bool isDone = false;
+    private bool isServed = false;
     private GameObject me;
     private GameObject bord;
     private GameObject manager;
@@ -26,20 +27,21 @@ public class Customers : MonoBehaviour
 
     private void Update()
     {
-        if (patience >= 0)
+        if (patience >= 0 && !isServed)
         {
             patience -= Time.deltaTime;
             timer.value = patience;
         }
         else if (!isDone && patience <= 0)
         {
-            StartCoroutine(nameof(Leave));
             isDone = true;
+            StartCoroutine(nameof(Leave));
         }
     }
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)
     {
+        isServed = true;
         meal.transform.SetParent(bord.transform);
         meal.transform.position = meal.transform.parent.position;
         TestMug order = meal.GetComponent<TestMug>();
@@ -62,7 +64,6 @@ public class Customers : MonoBehaviour
             }
         }
         isCorrect = true;
-        isDone = true;
         StartCoroutine(nameof(Leave));
     }
 
@@ -91,22 +92,28 @@ public class Customers : MonoBehaviour
 
     IEnumerator Leave()
     {
+        if (isDone)
+        {
+            manager.GetComponent<CustomerManager>().CompleteOrder(0);
+            manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
+            Destroy(me);
+        }
+
         if (isCorrect)
         {
             manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
+            yield return new WaitForSeconds(delay);
+            Destroy(bord.transform.GetChild(0).gameObject);
         }
         else
         {
             manager.GetComponent<CustomerManager>().CompleteOrder(0);
+            yield return new WaitForSeconds(delay);
+            Destroy(bord.transform.GetChild(0).gameObject);
         }
 
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(2);
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
         Destroy(me);
-        if (isDone && !isCorrect)
-        {
-            yield break;
-        }
-        Destroy(bord.transform.GetChild(0).gameObject);
     }
 }

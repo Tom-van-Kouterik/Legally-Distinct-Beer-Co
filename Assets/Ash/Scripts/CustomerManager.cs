@@ -58,7 +58,7 @@ public class CustomerManager : MonoBehaviour
         int volume = 0;
         for (int i = 0; i < drinkAcces.Length; i++)
         {
-            if (!drinkAcces[i])
+            if (drinkAcces[i] == false)
             {
                 valid++;
             }
@@ -68,16 +68,21 @@ public class CustomerManager : MonoBehaviour
         {
             return(false);
         }
-        orderGlass = Random.Range(0,5);
-        orderGarnish = Random.Range(0,5);
+
+        if (orderDrinks.Count != 0)
+        {
+            orderDrinks.Clear();
+        }
+        orderGlass = Random.Range(0,6);
+        orderGarnish = Random.Range(0,6);
         while (!garnishAcces[orderGarnish])
         {
-            orderGarnish = Random.Range(0, 5);
+            orderGarnish = Random.Range(0, 6);
         }
 
         while (!glassAcces[orderGlass])
         {
-            orderGlass = Random.Range(0, 5);
+            orderGlass = Random.Range(0, 6);
         }
 
         int size;
@@ -124,7 +129,7 @@ public class CustomerManager : MonoBehaviour
     /// </summary>
     public void CompleteOrder(int profit)
     {
-        //placeholder function
+        Debug.Log(profit);
     }
 
     /// <summary>

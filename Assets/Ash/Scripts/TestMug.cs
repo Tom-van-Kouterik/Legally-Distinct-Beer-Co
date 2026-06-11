@@ -19,16 +19,16 @@ public class TestMug : MonoBehaviour
 
     public void SetSize(int glass)
     {
-        if (glass >= 10 || sizeSet)
+        if (glass >= 6 || sizeSet)
         {
             return;
         }
         glassType = glass;
-        if (glass <= 3)
+        if (glass <= 1)
         {
             size = 4;
         }
-        else if (glass > 3 && glass <= 6)
+        else if (glass > 1 && glass <= 2)
         {
             size = 5;
         }
@@ -47,7 +47,7 @@ public class TestMug : MonoBehaviour
 
     public void AddDrink(int type)
     {
-        if (counter >= drinkTypes.Length || type >= 10)
+        if (counter >= drinkTypes.Length || type >= 6)
         {
             return;
         }
@@ -68,7 +68,7 @@ public class TestMug : MonoBehaviour
 
     public void AddGarnish(int type)
     {
-        if (isDecorated || type >= 10)
+        if (isDecorated || type >= 6)
         {
             return;
         }
