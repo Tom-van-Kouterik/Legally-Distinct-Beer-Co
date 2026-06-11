@@ -27,12 +27,12 @@ public class Customers : MonoBehaviour
 
     private void Update()
     {
-        if (patience >= 0 && !isServed)
+        if (patience >= 0 && !isServed && !isDone)
         {
             patience -= Time.deltaTime;
             timer.value = patience;
         }
-        else if (!isDone && patience <= 0)
+        else if (patience <= 0)
         {
             isDone = true;
             StartCoroutine(nameof(Leave));
@@ -73,9 +73,9 @@ public class Customers : MonoBehaviour
         visuals = GetComponent<OrderUI>();
         glass = glassValue;
         money = UnityEngine.Random.Range(20, 30);
-        patience = UnityEngine.Random.Range(5, 10);
+        patience = UnityEngine.Random.Range(20, 25);
         timer.maxValue = (int)patience;
-        delay = UnityEngine.Random.Range(5, 10);
+        delay = UnityEngine.Random.Range(2, 5);
         garnish = garnishValue;
         drinks = new int[drinkValues.Count];
         for (int i = 0; i < drinkValues.Count; i++)
@@ -92,24 +92,22 @@ public class Customers : MonoBehaviour
 
     IEnumerator Leave()
     {
-        if (isDone)
+        if (isServed)
         {
-            manager.GetComponent<CustomerManager>().CompleteOrder(0);
-            manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
-            Destroy(me);
+            Destroy(bord.transform.GetChild(0).gameObject);
         }
 
         if (isCorrect)
         {
+            me.GetComponent<Renderer>().material = happy;
             manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
             yield return new WaitForSeconds(delay);
-            Destroy(bord.transform.GetChild(0).gameObject);
         }
         else
         {
+            me.GetComponent<Renderer>().material = sad;
             manager.GetComponent<CustomerManager>().CompleteOrder(0);
             yield return new WaitForSeconds(delay);
-            Destroy(bord.transform.GetChild(0).gameObject);
         }
 
         yield return new WaitForSeconds(2);

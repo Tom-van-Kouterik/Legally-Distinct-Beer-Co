@@ -3,6 +3,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class Player : MonoBehaviour
@@ -18,15 +19,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject heldItem;
     [SerializeField] private GameObject glass;
-    private GameObject interactedIngredient;
-    LayerMask layerMask;
 
     /// <summary>
     /// Sets the camera to the "myCam" variable and adds the necessary layers to the LayerMask
     /// </summary>
     void Start()
-    {
-        layerMask = LayerMask.GetMask("Holdable", "Trashcan", "Customer", "Ingredient");  
+    {  
         myCam = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
@@ -65,7 +63,6 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (context.performed)
         {
-            Debug.Log("Test");
             //creates 3 local variables for each mask that only holds the specified layer and shoots a ray to check if it hit that layer
             //it checks if the player is holding an item, if so it does nothing if not it puts the hit gameobject into the players hand
             LayerMask holdable = LayerMask.GetMask("Holdable");
@@ -90,6 +87,10 @@ public class Player : MonoBehaviour
                 {
                     Destroy(heldItem);
                     handIsFull = false; 
+                }
+                if (hit.collider.TryGetComponent<MeshCollider>(out MeshCollider tap) == true)
+                {
+                    Debug.Log("works");
                 }
             }
             
