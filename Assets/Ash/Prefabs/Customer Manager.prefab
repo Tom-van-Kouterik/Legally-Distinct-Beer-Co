@@ -60,4 +60,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isOcupied: 00000000
+  drinkAcces: 000000000000
+  glassAcces: 000000000000
+  garnishAcces: 000000000000
   customer: {fileID: 5432005875020747082, guid: 8a79b0df9e627e44ba27ac1d7fc0ffb3, type: 3}

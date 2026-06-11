@@ -1,8 +1,8 @@
 using System;
-using Unity.VisualScripting;
-using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Customers : MonoBehaviour
 {
@@ -12,34 +12,36 @@ public class Customers : MonoBehaviour
     private int seatNumber;
     private int delay;
     private int money;
-    private int glassSize;
     private float patience;
     private bool isCorrect = false;
     private bool isDone = false;
+    private bool isServed = false;
     private GameObject me;
     private GameObject bord;
     private GameObject manager;
     public OrderUI visuals;
+    [SerializeField] private Slider timer;
     [SerializeField] private Material happy;
     [SerializeField] private Material sad;
-    [SerializeField] private Material[] want;
 
 
     private void Update()
     {
-        if (patience >= 0)
+        if (patience >= 0 && !isServed && !isDone)
         {
             patience -= Time.deltaTime;
+            timer.value = patience;
         }
-        else if (!isDone && patience <= 0)
+        else if (patience <= 0)
         {
-            StartCoroutine(nameof(Leave));
             isDone = true;
+            StartCoroutine(nameof(Leave));
         }
     }
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)
     {
+        isServed = true;
         meal.transform.SetParent(bord.transform);
         meal.transform.position = meal.transform.parent.position;
         TestMug order = meal.GetComponent<TestMug>();
@@ -62,62 +64,54 @@ public class Customers : MonoBehaviour
             }
         }
         isCorrect = true;
-        isDone = true;
         StartCoroutine(nameof(Leave));
     }
 
-    // gets called when a new customer is created to give them their random variables
-    public void SetVariables(int stool, GameObject cm, GameObject plate)
+    // gets called when a new customer is created to give them their random variables and asign relevant data
+    public void SetVariables(int stool, GameObject cm, GameObject plate, int glassValue, int garnishValue, List<int> drinkValues)
     {
         visuals = GetComponent<OrderUI>();
-        glass = UnityEngine.Random.Range(0, 9);
-        if (glass <= 3)
-        {
-            glassSize = 4;
-        }
-        else if (glass > 3 && glass <= 6)
-        {
-            glassSize = 5;
-        }
-        else
-        {
-            glassSize = 6;
-        }
+        glass = glassValue;
         money = UnityEngine.Random.Range(20, 30);
-        patience = UnityEngine.Random.Range(5, 10);
-        delay = UnityEngine.Random.Range(5, 10);
-        garnish = UnityEngine.Random.Range(0, 9);
-        drinks = new int[glassSize];
-        for (int i = 0; i < glassSize; i++)
+        patience = UnityEngine.Random.Range(20, 25);
+        timer.maxValue = (int)patience;
+        delay = UnityEngine.Random.Range(2, 5);
+        garnish = garnishValue;
+        drinks = new int[drinkValues.Count];
+        for (int i = 0; i < drinkValues.Count; i++)
         {
-            drinks[i] = UnityEngine.Random.Range(0, 9);
+            drinks[i] = drinkValues[i];
         }
         Array.Sort(drinks);
         seatNumber = stool;
         manager = cm;
         me = this.gameObject;
         bord = plate;
-        visuals.DisplayOrder(glassSize, glass, garnish, drinks);
+        visuals.DisplayOrder(drinkValues.Count, glass, garnish, drinks);
     }
 
     IEnumerator Leave()
     {
+        if (isServed)
+        {
+            Destroy(bord.transform.GetChild(0).gameObject);
+        }
+
         if (isCorrect)
         {
-            manager.GetComponent<CustomerManager>().CompleteOrder(money);
+            me.GetComponent<Renderer>().material = happy;
+            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
+            yield return new WaitForSeconds(delay);
         }
         else
         {
+            me.GetComponent<Renderer>().material = sad;
             manager.GetComponent<CustomerManager>().CompleteOrder(0);
+            yield return new WaitForSeconds(delay);
         }
 
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(2);
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
         Destroy(me);
-        if (isDone && !isCorrect)
-        {
-            yield break;
-        }
-        Destroy(bord.transform.GetChild(0).gameObject);
     }
 }

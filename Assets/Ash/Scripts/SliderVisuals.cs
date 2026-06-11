@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class slidervisuals : MonoBehaviour
+public class SliderVisuals : MonoBehaviour
 {
     [SerializeField] private Image plane;
     [SerializeField] private Material[] visuals;

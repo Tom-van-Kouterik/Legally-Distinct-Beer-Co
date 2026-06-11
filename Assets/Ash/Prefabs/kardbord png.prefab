@@ -200,19 +200,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e9f07063e2117b4183fec7cc18bbe92, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e9f07063e2117b4183fec7cc18bbe92, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e9f07063e2117b4183fec7cc18bbe92, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e9f07063e2117b4183fec7cc18bbe92, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e9f07063e2117b4183fec7cc18bbe92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e9f07063e2117b4183fec7cc18bbe92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e9f07063e2117b4183fec7cc18bbe92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -265,7 +265,6 @@ MonoBehaviour:
   glassType: 0
   garnishType: 0
   drinkTypes: 
-  empty: {fileID: 2100000, guid: 6e6d4cb5cf866be418b8471b0227af65, type: 2}
   contents: []
   visuals:
   - {fileID: 2100000, guid: 9fcd072aacd86fb45bedb2d54fb1870a, type: 2}
