@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e65ebc70888b64b418d15fb597f0bd45
+guid: 2945b1181624af74cb9faeb02b4abacb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beerglasses_Garnish_5_0
+      name: "ingredi\xEBnts_0"
       rect:
         serializedVersion: 2
-        x: 35
-        y: 49
-        width: 276
-        height: 372
+        x: 15
+        y: 222
+        width: 144
+        height: 164
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8630cfa30330a7543b36c0cafb3ad173
-      internalID: -1942959984
+      spriteID: f473a24203ca1814eace5e4735bc677b
+      internalID: -628396746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beerglasses_Garnish_5_1
+      name: "ingredi\xEBnts_2"
       rect:
         serializedVersion: 2
-        x: 403
-        y: 340
-        width: 6
-        height: 6
+        x: 188
+        y: 203
+        width: 152
+        height: 72
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c4c52e295f6a504a863778d45f09638
-      internalID: 1762012842
+      spriteID: 726243254fba2954b99d541860a19738
+      internalID: -716536450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beerglasses_Garnish_5_2
+      name: "ingredi\xEBnts_4"
       rect:
         serializedVersion: 2
-        x: 414
-        y: 110
-        width: 254
-        height: 261
+        x: 382
+        y: 213
+        width: 103
+        height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d915a2af961e5a4fb75487cbbf06583
-      internalID: -1072512393
+      spriteID: 499de2054bcd5c043bbaf9e0ce6bca86
+      internalID: -1033190517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beerglasses_Garnish_5_3
+      name: "ingredi\xEBnts_5"
       rect:
         serializedVersion: 2
-        x: 728
-        y: 14
-        width: 477
-        height: 434
+        x: 18
+        y: 30
+        width: 133
+        height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +191,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 328251fc51e622e4498464039bb03723
-      internalID: -1401959905
+      spriteID: 56137d7dcbcb46e4fa04ff7551f27647
+      internalID: 1030111563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beerglasses_Garnish_5_4
+      name: "ingredi\xEBnts_6"
       rect:
         serializedVersion: 2
-        x: 1265
-        y: 335
-        width: 5
-        height: 6
+        x: 202
+        y: 43
+        width: 159
+        height: 133
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f354258e3eacdb1439f47f5c94850efa
-      internalID: -2084093330
+      spriteID: 2b56b5f90cef4da459d5348f21b1b56a
+      internalID: 1818920313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beerglasses_Garnish_5_5
+      name: "ingredi\xEBnts_7"
       rect:
         serializedVersion: 2
-        x: 1311
-        y: 112
-        width: 171
-        height: 253
+        x: 391
+        y: 43
+        width: 94
+        height: 93
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,52 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3989fe46127c4ac4a9c525e080c173a8
-      internalID: -1632467844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beerglasses_Garnish_5_6
-      rect:
-        serializedVersion: 2
-        x: 1577
-        y: 86
-        width: 337
-        height: 355
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a75e3d62082a0b344ba1eb829b161c3f
-      internalID: -1858717409
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beerglasses_Garnish_5_7
-      rect:
-        serializedVersion: 2
-        x: 1977
-        y: 98
-        width: 467
-        height: 349
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 845cf7cd82cab8849917a5217d179b15
-      internalID: -1439319022
+      spriteID: dc1c962367dfe1640a4f7826c9553a77
+      internalID: -1331194485
       vertices: []
       indices: 
       edges: []
@@ -289,7 +245,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0db311e9494927c4b93a84da9e89c0fc
+    spriteID: 9847c0e4e580c1d41a73deca129cf88f
     internalID: 0
     vertices: []
     indices: 
@@ -301,14 +257,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Beerglasses_Garnish_5_0: -1942959984
-      Beerglasses_Garnish_5_1: 1762012842
-      Beerglasses_Garnish_5_2: -1072512393
-      Beerglasses_Garnish_5_3: -1401959905
-      Beerglasses_Garnish_5_4: -2084093330
-      Beerglasses_Garnish_5_5: -1632467844
-      Beerglasses_Garnish_5_6: -1858717409
-      Beerglasses_Garnish_5_7: -1439319022
+      "ingredi\xEBnts_0": -628396746
+      "ingredi\xEBnts_1": -221562634
+      "ingredi\xEBnts_2": -716536450
+      "ingredi\xEBnts_3": 504917081
+      "ingredi\xEBnts_4": -1033190517
+      "ingredi\xEBnts_5": 1030111563
+      "ingredi\xEBnts_6": 1818920313
+      "ingredi\xEBnts_7": -1331194485
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
