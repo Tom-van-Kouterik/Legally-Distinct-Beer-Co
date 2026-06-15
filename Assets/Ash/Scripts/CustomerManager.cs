@@ -127,7 +127,7 @@ public class CustomerManager : MonoBehaviour
     /// <summary>
     /// either add or remove gold from gold total depending on order completion
     /// </summary>
-    public void CompleteOrder(int profit)
+    public void CompleteOrder(int profit, GameObject customer)
     {
         Debug.Log(profit);
     }
