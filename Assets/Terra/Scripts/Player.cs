@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject heldItem;
     [SerializeField] private GameObject glass;
+    [SerializeField] private Canvas confirmUI;
 
     /// <summary>
     /// Sets the camera to the "myCam" variable and adds the necessary layers to the LayerMask
@@ -119,6 +120,13 @@ public class Player : MonoBehaviour
                         heldItem.GetComponent<TestMug>().AddGarnish(hit.collider.GetComponent<Ingredient>().ingredientNumber);
                     }
                 }         
+            }
+
+            LayerMask book = LayerMask.GetMask("Book");
+            if(Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, book))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                confirmUI.gameObject.SetActive(true);
             }
         }
     }
