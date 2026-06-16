@@ -73,7 +73,7 @@ public class Customers : MonoBehaviour
         visuals = GetComponent<OrderUI>();
         glass = glassValue;
         money = UnityEngine.Random.Range(20, 30);
-        patience = UnityEngine.Random.Range(20, 25);
+        patience = UnityEngine.Random.Range(20, 30);
         timer.maxValue = (int)patience;
         delay = UnityEngine.Random.Range(2, 5);
         garnish = garnishValue;
@@ -103,13 +103,13 @@ public class Customers : MonoBehaviour
         {
             me.GetComponent<Renderer>().material = happy;
             yield return new WaitForSeconds(delay);
-            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
+            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience, true);
         }
         else if (!isCorrect && !complete)
         {
             me.GetComponent<Renderer>().material = sad;
             yield return new WaitForSeconds(delay);
-            manager.GetComponent<CustomerManager>().CompleteOrder(0);
+            manager.GetComponent<CustomerManager>().CompleteOrder(0, false);
         }
         complete = true;
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);

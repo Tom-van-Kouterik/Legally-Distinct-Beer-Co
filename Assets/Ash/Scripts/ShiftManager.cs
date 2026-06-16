@@ -13,12 +13,12 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private GameObject[] glassPrefabs;
     [SerializeField] private GameObject[] garnishPrefabs;
     private bool[] isTaken;
-    private int score;
-    private int wrong;
-    private int correct;
+    public int score;
+    public int wrong;
+    public int correct;
     private int completedShifts = 0;
     private int spawnedItems = 0;
-    private int maxTime = 50;
+    private int maxTime = 601;
     private float timer;
     private bool isOn = false;
     private bool spawnDelay = false;
@@ -28,6 +28,7 @@ public class ShiftManager : MonoBehaviour
         isTaken = new bool[itemSpawns.Length];
         timer = maxTime;
         SetUp();
+        ShiftStart();
     }
 
     private void Update()
@@ -111,6 +112,7 @@ public class ShiftManager : MonoBehaviour
             drinks[rng] = true;
             spawnedItems++;
         }
+        UpdateLists();
     }
 
 
@@ -139,7 +141,7 @@ public class ShiftManager : MonoBehaviour
         {
             spawn = Random.Range(0, itemSpawns.Length);
         }
-        Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+        Instantiate(drinkPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
         isTaken[spawn] = true;
         drinks[rng] = true;
         spawnedItems++;
@@ -187,6 +189,14 @@ public class ShiftManager : MonoBehaviour
             drinks[rng] = true;
             spawnedItems++;
         }
+        UpdateLists();
+    }
+    
+    private void UpdateLists()
+    {
+        subManager.drinkAcces = drinks;
+        subManager.glassAcces = glasses;
+        subManager.garnishAcces = garnishes;
     }
     IEnumerator Spawn()
     {
