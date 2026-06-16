@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 149794802}
   - component: {fileID: 149794806}
   - component: {fileID: 149794807}
+  - component: {fileID: 149794808}
   m_Layer: 7
   m_Name: InteractionTestObject
   m_TagString: Untagged
@@ -240,7 +241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149794801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17fdfcf869d2fac4daa45e23b619ba30, type: 3}
   m_Name: 
@@ -274,6 +275,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &149794808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149794801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8073c13c1a8c7604da81ab31b02fa1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestMug
+  glassType: 0
+  garnishType: 0
+  drinkTypes: 
+  contents: []
+  visuals: []
+  garnish: {fileID: 0}
+  cell: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &443150924
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientNumber: 4
+  isDrink: 0
 --- !u!1 &1405010371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientNumber: 1
+  isDrink: 0
 --- !u!136 &1468854064
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1355,6 +1378,7 @@ MonoBehaviour:
   handIsFull: 0
   handObj: {fileID: 1405010371}
   heldItem: {fileID: 0}
+  glass: {fileID: 149794801}
 --- !u!54 &1718231288
 Rigidbody:
   m_ObjectHideFlags: 0
