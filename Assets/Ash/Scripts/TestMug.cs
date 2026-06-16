@@ -88,6 +88,8 @@ public class TestMug : MonoBehaviour
             selected.transform.localScale = canvas.transform.localScale;
             UISpace = selected.GetComponent<RectTransform>();
             UISpace.transform.localPosition = new Vector3(0, (0.25f / 2 * i) - 0.25f, 0);
+            selected.transform.rotation = canvas.transform.rotation;
+            UISpace.transform.rotation = canvas.transform.rotation;
             contents[i] = selected;
         }
         UpdateCells();

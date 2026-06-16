@@ -198,6 +198,11 @@ public class ShiftManager : MonoBehaviour
         subManager.glassAcces = glasses;
         subManager.garnishAcces = garnishes;
     }
+
+    private void UpdateCandle()
+    {
+
+    }
     IEnumerator Spawn()
     {
         yield return new WaitForSeconds(1);
