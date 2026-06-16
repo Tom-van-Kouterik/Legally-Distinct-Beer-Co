@@ -4,9 +4,11 @@ using UnityEngine.UI;
 public class OrderUI : MonoBehaviour
 {
     [SerializeField] private GameObject canvas;
-    [SerializeField] private GameObject glass;
-    [SerializeField] private GameObject garnish;
+    [SerializeField] private GameObject glassCell;
+    [SerializeField] private GameObject garnishCell;
     [SerializeField] private Material[] visuals;
+    [SerializeField] private Sprite[] glasses;
+    [SerializeField] private Sprite[] garnish;
     [SerializeField] private GameObject[] contents;
     [SerializeField] private GameObject cell;
 
@@ -26,7 +28,7 @@ public class OrderUI : MonoBehaviour
             cellVisual = contents[i].GetComponent<Image>();
             cellVisual.material = visuals[liquids[i]];
         }
-        glass.GetComponent<Image>().material = visuals[glassType];
-        garnish.GetComponent<Image>().material = visuals[garnishType];
+        glassCell.GetComponent<Image>().sprite = glasses[glassType];
+        garnishCell.GetComponent<Image>().sprite = garnish[garnishType];
     }
 }

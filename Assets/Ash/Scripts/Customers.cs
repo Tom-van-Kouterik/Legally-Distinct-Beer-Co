@@ -23,8 +23,13 @@ public class Customers : MonoBehaviour
     [SerializeField] private Slider timer;
     [SerializeField] private Material happy;
     [SerializeField] private Material sad;
+    [SerializeField] private Material[] variants;
 
 
+    private void Awake()
+    {
+        gameObject.GetComponent<Renderer>().material = variants[UnityEngine.Random.Range(0, 5)];
+    }
     private void Update()
     {
         

@@ -13,6 +13,7 @@ public class TestMug : MonoBehaviour
     private int size;
     [SerializeField] private GameObject[] contents;
     [SerializeField] private Material[] visuals;
+    [SerializeField] private Sprite[] images;
     [SerializeField] private GameObject garnish;
     [SerializeField] private GameObject cell;
     [SerializeField] private GameObject canvas;
@@ -73,7 +74,7 @@ public class TestMug : MonoBehaviour
             return;
         }
         garnishType = type;
-        garnish.GetComponent<Image>().material = visuals[garnishType];
+        garnish.GetComponent<Image>().sprite = images[garnishType];
         isDecorated = true;
     }
 
