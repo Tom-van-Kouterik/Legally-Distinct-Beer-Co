@@ -82,12 +82,14 @@ MonoBehaviour:
   - {fileID: 4820908388447670871, guid: aaeac87b2e1edd241a71c51824733ce4, type: 3}
   - {fileID: 1188837184344397523, guid: 83cfb4659dbb3c3449ee49dbd290b47b, type: 3}
   garnishPrefabs:
-  - {fileID: 2378696026096491782, guid: 5a39167d83806124d91abf31cbdeefd9, type: 3}
+  - {fileID: 4570185286102913441, guid: ea8ef57a471c7954099678569c974d4a, type: 3}
   - {fileID: 8863336865580233452, guid: bc25f26db0be5434aa52da9ef7557e56, type: 3}
   - {fileID: 4658894740769778598, guid: 7660d6a5822fb5f428ac317e8389f2a3, type: 3}
   - {fileID: 8153908697655766713, guid: 2b6c31e972d676c4d94a40b09c4d3baa, type: 3}
   - {fileID: 7655635598578290045, guid: f37f43d9a4bf7cf47bce16b44c584530, type: 3}
   - {fileID: 8039096844407251798, guid: c705d46f931ff1b4b81932f6f1bd612c, type: 3}
+  candle: {fileID: 0}
+  canvas: {fileID: 0}
   score: 0
   wrong: 0
   correct: 0
