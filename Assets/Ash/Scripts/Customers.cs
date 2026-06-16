@@ -32,7 +32,7 @@ public class Customers : MonoBehaviour
             patience -= Time.deltaTime;
             timer.value = patience;
         }
-        else if (patience <= 0)
+        else if (patience <= 0 && !isDone)
         {
             isDone = true;
             StartCoroutine(nameof(Leave));
@@ -92,26 +92,27 @@ public class Customers : MonoBehaviour
 
     IEnumerator Leave()
     {
+        bool complete = false;
         if (isServed)
         {
+            yield return new WaitForSeconds(2);
             Destroy(bord.transform.GetChild(0).gameObject);
         }
 
-        if (isCorrect)
+        if (isCorrect && !complete)
         {
             me.GetComponent<Renderer>().material = happy;
-            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
             yield return new WaitForSeconds(delay);
+            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
         }
-        else
+        else if (!isCorrect && !complete)
         {
             me.GetComponent<Renderer>().material = sad;
-            manager.GetComponent<CustomerManager>().CompleteOrder(0);
             yield return new WaitForSeconds(delay);
+            manager.GetComponent<CustomerManager>().CompleteOrder(0);
         }
-
-        yield return new WaitForSeconds(2);
+        complete = true;
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
-        Destroy(me);
+        yield return null;
     }
 }

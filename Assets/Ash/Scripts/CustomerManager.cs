@@ -117,6 +117,7 @@ public class CustomerManager : MonoBehaviour
     public void DestroyCustomer(int seat)
     {
         isOcupied[seat] = false;
+        Destroy(people[seat]);
 
         if (atMax)
         {

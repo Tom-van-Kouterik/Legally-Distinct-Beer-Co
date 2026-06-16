@@ -17,11 +17,6 @@ public class DevTools : MonoBehaviour
     [SerializeField] private GameObject glassSpawn;
 
     //copy customer selection/switch
-
-    private void Awake()
-    {
-        StartCoroutine(nameof(Spawn));
-    }
     public void Switch()
     {
         MeshRenderer selection;
@@ -83,12 +78,5 @@ public class DevTools : MonoBehaviour
             return;
         }
         data.AddGarnish((int)garnishValue.value);
-    }
-
-    IEnumerator Spawn()
-    {
-        manager.SpawnCustomer();
-        yield return new WaitForSeconds(10);
-        StartCoroutine(nameof(Spawn));
     }
 }
