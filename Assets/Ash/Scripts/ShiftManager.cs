@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,147 +16,181 @@ public class ShiftManager : MonoBehaviour
     private int score;
     private int wrong;
     private int correct;
+    private int completedShifts = 0;
     private int spawnedItems = 0;
+    private int maxTime = 50;
+    private float timer;
+    private bool isOn = false;
+    private bool spawnDelay = false;
 
     private void Start()
     {
         isTaken = new bool[itemSpawns.Length];
-        SpawnIngredients();
-        SpawnIngredients();
-    }
-    private void ShiftStart()
-    {
-
+        timer = maxTime;
+        SetUp();
     }
 
-    private void ShiftEnd()
+    private void Update()
     {
+        if (timer >= 0 && isOn)
+        {
+            timer -= Time.deltaTime;
+        }
+        else if (timer <= 0 && isOn)
+        {
+            ShiftEnd();
+        }
 
+        if (Mathf.Ceil(timer) % 5 == 0f && !spawnDelay && isOn)
+        {
+            subManager.SpawnCustomer();
+            spawnDelay = true;
+            StartCoroutine(nameof(Spawn));
+        }
+    }
+    public void ShiftStart()
+    {
+        SpawnIngredients();
+        timer = maxTime;
+        isOn = true;
+    }
+
+    public void ShiftEnd()
+    {
+        completedShifts++;
+        isOn = false;
     }
 
     private void SpawnIngredients()
     {
         int rng = Random.Range(0, glasses.Length);
         int spawn = Random.Range(0, itemSpawns.Length);
-        if(spawnedItems >= itemSpawns.Length)
+        if (spawnedItems >= itemSpawns.Length || completedShifts == 0)
         {
             return;
         }
 
-        if(spawnedItems == 0)
+        for (int i = 0; i < 2; i++)
         {
+            while (glasses[rng])
+            {
+                rng = Random.Range(0, 6);
+            }
+            while (isTaken[spawn])
+            {
+                spawn = Random.Range(0, itemSpawns.Length);
+            }
             Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
             isTaken[spawn] = true;
             glasses[rng] = true;
             spawnedItems++;
-            rng = Random.Range(0, 6);
-            spawn = Random.Range(0, itemSpawns.Length);
+
+            while (garnishes[rng])
+            {
+                rng = Random.Range(0, 6);
+            }
             while (isTaken[spawn])
             {
-                spawn = Random.Range(0, 6);
+                spawn = Random.Range(0, itemSpawns.Length);
             }
             Instantiate(garnishPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
             isTaken[spawn] = true;
             garnishes[rng] = true;
             spawnedItems++;
-            rng = Random.Range(0, 6);
-            spawn = Random.Range(0, itemSpawns.Length);
+
+            while (drinks[rng])
+            {
+                rng = Random.Range(0, 6);
+            }
             while (isTaken[spawn])
             {
-                spawn = Random.Range(0, 6);
+                spawn = Random.Range(0, itemSpawns.Length);
             }
-            Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+            Instantiate(drinkPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
             isTaken[spawn] = true;
             drinks[rng] = true;
             spawnedItems++;
-            rng = Random.Range(0, 6);
-            spawn = Random.Range(0, itemSpawns.Length);
-
-            for (int i = 0; i < 3; i++)
-            {
-                while (glasses[rng])
-                {
-                    rng = Random.Range(0, 6);
-                }
-                while (isTaken[spawn])
-                {
-                    spawn = Random.Range(0, itemSpawns.Length);
-                }
-                Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
-                isTaken[spawn] = true;
-                glasses[rng] = true;
-                spawnedItems++;
-
-                while (garnishes[rng])
-                {
-                    rng = Random.Range(0, 6);
-                }
-                while (isTaken[spawn])
-                {
-                    spawn = Random.Range(0, itemSpawns.Length);
-                }
-                Instantiate(garnishPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
-                isTaken[spawn] = true;
-                garnishes[rng] = true;
-                spawnedItems++;
-
-                while (drinks[rng])
-                {
-                    rng = Random.Range(0, 6);
-                }
-                while (isTaken[spawn])
-                {
-                    spawn = Random.Range(0, itemSpawns.Length);
-                }
-                Instantiate(drinkPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
-                isTaken[spawn] = true;
-                drinks[rng] = true;
-                spawnedItems++;
-            }
         }
-        else
+    }
+
+
+    private void SetUp()
+    {
+        int rng = Random.Range(0, glasses.Length);
+        int spawn = Random.Range(0, itemSpawns.Length);
+
+        Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+        isTaken[spawn] = true;
+        glasses[rng] = true;
+        spawnedItems++;
+        rng = Random.Range(0, 6);
+        spawn = Random.Range(0, itemSpawns.Length);
+        while (isTaken[spawn])
         {
-            for (int i = 0; i < 2; i++)
-            {
-                while (glasses[rng])
-                {
-                    rng = Random.Range(0, 6);
-                }
-                while (isTaken[spawn])
-                {
-                    spawn = Random.Range(0, itemSpawns.Length);
-                }
-                Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
-                isTaken[spawn] = true;
-                glasses[rng] = true;
-                spawnedItems++;
-
-                while (garnishes[rng])
-                {
-                    rng = Random.Range(0, 6);
-                }
-                while (isTaken[spawn])
-                {
-                    spawn = Random.Range(0, itemSpawns.Length);
-                }
-                Instantiate(garnishPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
-                isTaken[spawn] = true;
-                garnishes[rng] = true;
-                spawnedItems++;
-
-                while (drinks[rng])
-                {
-                    rng = Random.Range(0, 6);
-                }
-                while (isTaken[spawn])
-                {
-                    spawn = Random.Range(0, itemSpawns.Length);
-                }
-                Instantiate(drinkPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
-                isTaken[spawn] = true;
-                drinks[rng] = true;
-                spawnedItems++;
-            }
+            spawn = Random.Range(0, itemSpawns.Length);
         }
+        Instantiate(garnishPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+        isTaken[spawn] = true;
+        garnishes[rng] = true;
+        spawnedItems++;
+        rng = Random.Range(0, 6);
+        spawn = Random.Range(0, itemSpawns.Length);
+        while (isTaken[spawn])
+        {
+            spawn = Random.Range(0, itemSpawns.Length);
+        }
+        Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+        isTaken[spawn] = true;
+        drinks[rng] = true;
+        spawnedItems++;
+        rng = Random.Range(0, 6);
+        spawn = Random.Range(0, itemSpawns.Length);
+
+        for (int i = 0; i < 3; i++)
+        {
+            while (glasses[rng])
+            {
+                rng = Random.Range(0, 6);
+            }
+            while (isTaken[spawn])
+            {
+                spawn = Random.Range(0, itemSpawns.Length);
+            }
+            Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+            isTaken[spawn] = true;
+            glasses[rng] = true;
+            spawnedItems++;
+
+            while (garnishes[rng])
+            {
+                rng = Random.Range(0, 6);
+            }
+            while (isTaken[spawn])
+            {
+                spawn = Random.Range(0, itemSpawns.Length);
+            }
+            Instantiate(garnishPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+            isTaken[spawn] = true;
+            garnishes[rng] = true;
+            spawnedItems++;
+
+            while (drinks[rng])
+            {
+                rng = Random.Range(0, 6);
+            }
+            while (isTaken[spawn])
+            {
+                spawn = Random.Range(0, itemSpawns.Length);
+            }
+            Instantiate(drinkPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+            isTaken[spawn] = true;
+            drinks[rng] = true;
+            spawnedItems++;
+        }
+    }
+    IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(1);
+        spawnDelay = false;
     }
 }

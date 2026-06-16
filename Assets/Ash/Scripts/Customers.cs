@@ -102,15 +102,16 @@ public class Customers : MonoBehaviour
         if (isCorrect && !complete)
         {
             me.GetComponent<Renderer>().material = happy;
-            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience, gameObject);
+            yield return new WaitForSeconds(delay);
+            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
         }
         else if (!isCorrect && !complete)
         {
             me.GetComponent<Renderer>().material = sad;
-            manager.GetComponent<CustomerManager>().CompleteOrder(0, gameObject);
+            yield return new WaitForSeconds(delay);
+            manager.GetComponent<CustomerManager>().CompleteOrder(0);
         }
         complete = true;
-        yield return new WaitForSeconds(delay);
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
         yield return null;
     }
