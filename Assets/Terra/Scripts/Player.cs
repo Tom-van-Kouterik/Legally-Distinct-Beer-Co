@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private GameObject heldItem;
     [SerializeField] private GameObject glass;
     [SerializeField] private Canvas confirmUI;
+    [SerializeField] private GameObject shiftManager;
 
     /// <summary>
     /// Sets the camera to the "myCam" variable and adds the necessary layers to the LayerMask
@@ -127,6 +128,12 @@ public class Player : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.None;
                 confirmUI.gameObject.SetActive(true);
+            }
+
+            LayerMask bell = LayerMask.GetMask("Bell");
+            if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, bell))
+            {
+                shiftManager.GetComponent<ShiftManager>().ShiftStart();
             }
         }
     }
