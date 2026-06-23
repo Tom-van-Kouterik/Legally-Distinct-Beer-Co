@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 30052676}
   - component: {fileID: 30052675}
   - component: {fileID: 30052674}
+  - component: {fileID: 30052679}
   m_Layer: 10
   m_Name: ingredient test
   m_TagString: Untagged
@@ -248,6 +249,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30052679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30052673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3a486d778b9ab42b6941070b4c62ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWobble
+  isBeingLookedAt: 0
+  defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1 &78807602
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +276,7 @@ GameObject:
   - component: {fileID: 78807605}
   - component: {fileID: 78807604}
   - component: {fileID: 78807603}
+  - component: {fileID: 78807608}
   m_Layer: 10
   m_Name: ingredient test (1)
   m_TagString: Untagged
@@ -377,6 +393,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &78807608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78807602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3a486d778b9ab42b6941070b4c62ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWobble
+  isBeingLookedAt: 0
+  defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1 &119643515
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +731,7 @@ GameObject:
   - component: {fileID: 501034611}
   - component: {fileID: 501034610}
   - component: {fileID: 501034609}
+  - component: {fileID: 501034615}
   m_Layer: 7
   m_Name: InteractionTestObject
   m_TagString: Untagged
@@ -842,6 +873,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &501034615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501034608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3a486d778b9ab42b6941070b4c62ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWobble
+  isBeingLookedAt: 0
+  defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1 &587745081
 GameObject:
   m_ObjectHideFlags: 0
