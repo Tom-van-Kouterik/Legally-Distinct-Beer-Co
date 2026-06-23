@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class OrderUI : MonoBehaviour
     [SerializeField] private Sprite[] glassImages_3;
     [SerializeField] private Sprite[] glassImages_4;
     [SerializeField] private Sprite[] glassImages_5;
-    [SerializeField] private GameObject[] contents;
+    [SerializeField] private List <GameObject> contents;
     [SerializeField] private GameObject cell;
 
     private void Awake()
@@ -30,20 +31,24 @@ public class OrderUI : MonoBehaviour
     }
     public void DisplayOrder(int volume, int glassType, int garnishType, int[] liquids)
     {
-        contents = new GameObject[volume];
-        Image cellVisual;
-        GameObject selected;
-        RectTransform UISpace;
-        for (int i = 0; i < volume; i++)
+        if (volume == 4)
         {
-            selected = Instantiate(cell,canvas.transform,true);
-            selected.transform.localScale = canvas.transform.localScale;
-            UISpace = selected.GetComponent<RectTransform>();
-            UISpace.transform.localPosition = new Vector3(0, (0.25f / 2 * i), 0);
-            contents[i] = selected;
-            cellVisual = contents[i].GetComponent<Image>();
-            cellVisual.material = visuals[liquids[i]];
+            for (int i = 0; i < 2; i++)
+            {
+                Destroy(contents[contents.Count - 1]);
+                contents.RemoveAt(contents.Count - 1);
+            }
         }
-        glassCell.GetComponent<Image>().sprite = garnishImages[garnishType,glassType];
+        else if (volume == 5)
+        {
+            Destroy(contents[contents.Count - 1]);
+            contents.RemoveAt(contents.Count - 1);
+        }
+
+        for (int i = 0; i < contents.Count; i++)
+        {
+            contents[i].GetComponent<Image>().material = visuals[liquids[i]];
+        }
+        glassCell.GetComponent<Image>().sprite = garnishImages[garnishType, glassType];
     }
 }

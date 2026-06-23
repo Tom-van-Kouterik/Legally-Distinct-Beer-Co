@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +14,7 @@ public class TestMug : MonoBehaviour
     public int[] drinkTypes;
     private int counter = 0;
     private int size;
-    [SerializeField] private GameObject[] contents;
+    [SerializeField] private List <GameObject> contents;
     [SerializeField] private Material[] visuals;
     [SerializeField] public Sprite[,] garnishImages = new Sprite[6,6];
     [SerializeField] private Sprite[] glassImagesEmpty;
@@ -107,7 +109,6 @@ public class TestMug : MonoBehaviour
 
     private void SpawnCells()
     {
-        contents = new GameObject[size];
         GameObject selected;
         RectTransform UISpace;
         for (int i = 0; i < drinkTypes.Length; i++)
@@ -120,6 +121,20 @@ public class TestMug : MonoBehaviour
             UISpace.transform.rotation = canvas.transform.rotation;
             contents[i] = selected;
         }
-        UpdateCells();
+
+        //if (volume == 4)
+        //{
+        //    for (int i = 0; i < 2; i++)
+        //    {
+        //        Destroy(contents[contents.Count - 1]);
+        //        contents.RemoveAt(contents.Count - 1);
+        //    }
+        //}
+        //else if (volume == 5)
+        //{
+        //    Destroy(contents[contents.Count - 1]);
+        //    contents.RemoveAt(contents.Count - 1);
+        //}
+        //UpdateCells();
     }
 }
