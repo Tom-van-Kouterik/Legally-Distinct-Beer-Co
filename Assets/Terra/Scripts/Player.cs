@@ -77,7 +77,9 @@ public class Player : MonoBehaviour
                 }
                 heldItem = Instantiate(glass);
                 heldItem.transform.parent = handObj.transform;
-                heldItem.transform.SetPositionAndRotation(handObj.transform.position, handObj.transform.rotation);
+                heldItem.transform.localScale = new Vector3(4, 4, 4);
+                heldItem.transform.localPosition = new Vector3 (0,0,0);
+                heldItem.transform.Rotate(0, 45, 0);
                 heldItem.GetComponent<TestMug>().SetSize(hit.collider.GetComponent<Ingredient>().ingredientNumber);
                 handIsFull = true;
             }

@@ -109,32 +109,24 @@ public class TestMug : MonoBehaviour
 
     private void SpawnCells()
     {
-        GameObject selected;
-        RectTransform UISpace;
-        for (int i = 0; i < drinkTypes.Length; i++)
+        if (size == 4)
         {
-            selected = Instantiate(cell, canvas.transform, true);
-            selected.transform.localScale = canvas.transform.localScale;
-            UISpace = selected.GetComponent<RectTransform>();
-            UISpace.transform.localPosition = new Vector3(0, (0.25f / 2 * i) - 0.25f, 0);
-            selected.transform.rotation = canvas.transform.rotation;
-            UISpace.transform.rotation = canvas.transform.rotation;
-            contents[i] = selected;
+            for (int i = 0; i < 2; i++)
+            {
+                Destroy(contents[contents.Count - 1]);
+                contents.RemoveAt(contents.Count - 1);
+            }
+        }
+        else if (size == 5)
+        {
+            Destroy(contents[contents.Count - 1]);
+            contents.RemoveAt(contents.Count - 1);
         }
 
-        //if (volume == 4)
-        //{
-        //    for (int i = 0; i < 2; i++)
-        //    {
-        //        Destroy(contents[contents.Count - 1]);
-        //        contents.RemoveAt(contents.Count - 1);
-        //    }
-        //}
-        //else if (volume == 5)
-        //{
-        //    Destroy(contents[contents.Count - 1]);
-        //    contents.RemoveAt(contents.Count - 1);
-        //}
-        //UpdateCells();
+        for (int i = 0; i < contents.Count; i++)
+        {
+            contents[i].GetComponent<Image>().material = visuals[drinkTypes[i]];
+        }
+        UpdateCells();
     }
 }

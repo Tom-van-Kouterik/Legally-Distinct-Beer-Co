@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2731885052629403062}
@@ -108,7 +108,13 @@ MonoBehaviour:
   glassType: 0
   garnishType: 0
   drinkTypes: 
-  contents: []
+  contents:
+  - {fileID: 2932281537698149774}
+  - {fileID: 5224956651836003437}
+  - {fileID: 2670219615600639752}
+  - {fileID: 7493760179586272691}
+  - {fileID: 2220417659842621339}
+  - {fileID: 5875059107730499681}
   visuals:
   - {fileID: 2100000, guid: 9fcd072aacd86fb45bedb2d54fb1870a, type: 2}
   - {fileID: 2100000, guid: a692a119ee08cb24a966f8f2cef9f2f1, type: 2}
@@ -929,8 +935,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8949489915459749989}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.62}
-  m_LocalScale: {x: 0.625, y: 0.62500006, z: 0.6249999}
+  m_LocalPosition: {x: 0, y: 0, z: 0.482}
+  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7298481389212770039}
@@ -946,7 +952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 180, y: 90, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &39748102216548004
