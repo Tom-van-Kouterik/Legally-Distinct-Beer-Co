@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1600536989092135669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027514550196925969}
+  - component: {fileID: 1874305735959123197}
+  m_Layer: 0
+  m_Name: ShiftManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2027514550196925969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600536989092135669}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1874305735959123197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600536989092135669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a7fcc920799ab4e8c77f8151a3a630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShiftManager
+  subManager: {fileID: 0}
+  itemSpawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  drinks: 000000000000
+  glasses: 000000000000
+  garnishes: 000000000000
+  drinkPrefabs:
+  - {fileID: 8450321351029750969, guid: 8406cd641bf3d554c80db3b218a709f8, type: 3}
+  - {fileID: 6416929985480328928, guid: 0a913b48093195b4891e6a82064dfdc7, type: 3}
+  - {fileID: 3547507604758442710, guid: 3a8b87a7d064ee4499b0e6af04d7ae32, type: 3}
+  - {fileID: 2855546180486626995, guid: 20f9d692109446d4d81c9fa5ef32bce8, type: 3}
+  - {fileID: 2349274941124049230, guid: 22508f70685cf34479ffb9e316bf2c15, type: 3}
+  - {fileID: 2814540031590729093, guid: 3aa4bfd6ce79c274fa23e3c31d1b4c76, type: 3}
+  glassPrefabs:
+  - {fileID: 4855847447624983779, guid: 16d203a14263e4544b6b0dd2cfb7b362, type: 3}
+  - {fileID: 4855847447624983779, guid: 16d203a14263e4544b6b0dd2cfb7b362, type: 3}
+  - {fileID: 4855847447624983779, guid: 16d203a14263e4544b6b0dd2cfb7b362, type: 3}
+  - {fileID: 4855847447624983779, guid: 16d203a14263e4544b6b0dd2cfb7b362, type: 3}
+  - {fileID: 4855847447624983779, guid: 16d203a14263e4544b6b0dd2cfb7b362, type: 3}
+  - {fileID: 4855847447624983779, guid: 16d203a14263e4544b6b0dd2cfb7b362, type: 3}
+  garnishPrefabs:
+  - {fileID: 2378696026096491782, guid: 5a39167d83806124d91abf31cbdeefd9, type: 3}
+  - {fileID: 2378696026096491782, guid: 5a39167d83806124d91abf31cbdeefd9, type: 3}
+  - {fileID: 2378696026096491782, guid: 5a39167d83806124d91abf31cbdeefd9, type: 3}
+  - {fileID: 2378696026096491782, guid: 5a39167d83806124d91abf31cbdeefd9, type: 3}
+  - {fileID: 2378696026096491782, guid: 5a39167d83806124d91abf31cbdeefd9, type: 3}
+  - {fileID: 2378696026096491782, guid: 5a39167d83806124d91abf31cbdeefd9, type: 3}
