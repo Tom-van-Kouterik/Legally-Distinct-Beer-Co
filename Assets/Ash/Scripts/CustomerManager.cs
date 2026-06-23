@@ -7,13 +7,14 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private List<GameObject> plates = new();
     [SerializeField] public List<GameObject> people = new();
     [SerializeField] private List<bool> isOcupied = new() {false, false, false, false};
-    [SerializeField] private bool[] drinkAcces = new bool[6];
-    [SerializeField] private bool[] glassAcces = new bool[6];
-    [SerializeField] private bool[] garnishAcces = new bool[6];
+    [SerializeField] private ShiftManager higherManager;
+    [SerializeField] private GameObject customer;
+    public bool[] drinkAcces = new bool[6];
+    public bool[] glassAcces = new bool[6];
+    public bool[] garnishAcces = new bool[6];
     private int orderGlass;
     private int orderGarnish;
     private List<int> orderDrinks = new();
-    [SerializeField] private GameObject customer;
     private bool atMax = false;
 
     /// <summary>
@@ -128,9 +129,18 @@ public class CustomerManager : MonoBehaviour
     /// <summary>
     /// either add or remove gold from gold total depending on order completion
     /// </summary>
-    public void CompleteOrder(int profit)
+    public void CompleteOrder(int profit, bool result)
     {
-        Debug.Log(profit);
+        higherManager.score += profit;
+
+        if (result)
+        {
+            higherManager.correct++;
+        }
+        else
+        {
+            higherManager.wrong++;
+        }
     }
 
     /// <summary>

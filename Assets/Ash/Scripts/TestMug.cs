@@ -8,39 +8,52 @@ public class TestMug : MonoBehaviour
     public int garnishType;
     private bool isDecorated = false;
     private bool sizeSet = false;
+    private bool isFull = false;
     public int[] drinkTypes;
     private int counter = 0;
     private int size;
     [SerializeField] private GameObject[] contents;
     [SerializeField] private Material[] visuals;
+    [SerializeField] private Sprite[] spriteSheets;
+    [SerializeField] private Sprite[] garnishImages = new Sprite[6];
+    [SerializeField] private Sprite[] glassImages;
     [SerializeField] private GameObject garnish;
+    [SerializeField] private GameObject glass;
     [SerializeField] private GameObject cell;
     [SerializeField] private GameObject canvas;
 
-    public void SetSize(int glass)
+    private void Awake()
     {
-        if (glass >= 6 || sizeSet)
+        for (int i = 0; i < 6; i++)
+        {
+            //garnishImages[i] = Resources.LoadAll<>()
+        }
+    }
+    public void SetSize(int type)
+    {
+        if (type >= 6 || sizeSet)
         {
             return;
         }
-        glassType = glass;
-        if (glass <= 1)
+        glassType = type;
+        if (type <= 1)
         {
-            size = 4;
+            this.size = 4;
         }
-        else if (glass > 1 && glass <= 2)
+        else if (type > 1 && type <= 2)
         {
-            size = 5;
+            this.size = 5;
         }
         else
         {
-            size = 6;
+            this.size = 6;
         }
-        drinkTypes = new int[size];
+        drinkTypes = new int[this.size];
         for (int i = 0; i < drinkTypes.Length; i++)
         {
             drinkTypes[i] = 10;
         }
+        glass.GetComponent<Image>().sprite = glassImages[type];
         SpawnCells();
         sizeSet = true;
     }
@@ -55,6 +68,10 @@ public class TestMug : MonoBehaviour
         drinkTypes[counter] = type;
         UpdateCells();
         counter++;
+        if (counter >= drinkTypes.Length)
+        {
+            isFull = true;
+        }
     }
 
     private void UpdateCells()
@@ -68,12 +85,12 @@ public class TestMug : MonoBehaviour
 
     public void AddGarnish(int type)
     {
-        if (isDecorated || type >= 6)
+        if (isDecorated || type >= 6 || !isFull)
         {
             return;
         }
         garnishType = type;
-        garnish.GetComponent<Image>().material = visuals[garnishType];
+        //garnish.GetComponent<Image>().sprite = garnishImages[glassType, garnishType];
         isDecorated = true;
     }
 
@@ -88,6 +105,8 @@ public class TestMug : MonoBehaviour
             selected.transform.localScale = canvas.transform.localScale;
             UISpace = selected.GetComponent<RectTransform>();
             UISpace.transform.localPosition = new Vector3(0, (0.25f / 2 * i) - 0.25f, 0);
+            selected.transform.rotation = canvas.transform.rotation;
+            UISpace.transform.rotation = canvas.transform.rotation;
             contents[i] = selected;
         }
         UpdateCells();

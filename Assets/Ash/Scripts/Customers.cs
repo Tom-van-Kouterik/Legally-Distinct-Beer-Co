@@ -14,7 +14,7 @@ public class Customers : MonoBehaviour
     private int money;
     private float patience;
     private bool isCorrect = false;
-    private bool isDone = false;
+    //private bool isDone = false;
     private bool isServed = false;
     private GameObject me;
     private GameObject bord;
@@ -23,27 +23,34 @@ public class Customers : MonoBehaviour
     [SerializeField] private Slider timer;
     [SerializeField] private Material happy;
     [SerializeField] private Material sad;
+    [SerializeField] private Material[] variants;
 
 
+    private void Awake()
+    {
+        gameObject.GetComponent<Renderer>().material = variants[UnityEngine.Random.Range(0, 5)];
+    }
     private void Update()
     {
-        if (patience >= 0 && !isServed && !isDone)
-        {
-            patience -= Time.deltaTime;
-            timer.value = patience;
-        }
-        else if (patience <= 0 && !isDone)
-        {
-            isDone = true;
-            StartCoroutine(nameof(Leave));
-        }
+        
+        //if (patience >= 0 && !isServed && !isDone)
+        //{
+        //    patience -= Time.deltaTime;
+        //    timer.value = patience;
+        //}
+        //else if (patience <= 0 && !isDone)
+        //{
+        //    isDone = true;
+        //    StartCoroutine(nameof(Leave));
+        //}
+        
     }
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)
     {
         isServed = true;
         meal.transform.SetParent(bord.transform);
-        meal.transform.position = meal.transform.parent.position;
+        meal.transform.SetPositionAndRotation(bord.transform.position, bord.transform.rotation);
         TestMug order = meal.GetComponent<TestMug>();
         if (glass != order.glassType)
         {
@@ -73,7 +80,7 @@ public class Customers : MonoBehaviour
         visuals = GetComponent<OrderUI>();
         glass = glassValue;
         money = UnityEngine.Random.Range(20, 30);
-        patience = UnityEngine.Random.Range(20, 25);
+        patience = UnityEngine.Random.Range(20, 30);
         timer.maxValue = (int)patience;
         delay = UnityEngine.Random.Range(2, 5);
         garnish = garnishValue;
@@ -103,13 +110,13 @@ public class Customers : MonoBehaviour
         {
             me.GetComponent<Renderer>().material = happy;
             yield return new WaitForSeconds(delay);
-            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience);
+            manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience, true);
         }
         else if (!isCorrect && !complete)
         {
             me.GetComponent<Renderer>().material = sad;
             yield return new WaitForSeconds(delay);
-            manager.GetComponent<CustomerManager>().CompleteOrder(0);
+            manager.GetComponent<CustomerManager>().CompleteOrder(0, false);
         }
         complete = true;
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
