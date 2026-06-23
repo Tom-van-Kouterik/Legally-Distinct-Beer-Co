@@ -15,8 +15,15 @@ public class DevTools : MonoBehaviour
     [SerializeField] private GameObject glassPrefab;
     [SerializeField] private CustomerManager manager;
     [SerializeField] private GameObject glassSpawn;
+    [SerializeField] private GameObject test;
 
     //copy customer selection/switch
+
+    private void Start()
+    {
+        SpawnGlass();
+        SpriteTest();
+    }
     public void Switch()
     {
         MeshRenderer selection;
@@ -78,5 +85,18 @@ public class DevTools : MonoBehaviour
             return;
         }
         data.AddGarnish((int)garnishValue.value);
+    }
+
+    private void SpriteTest()
+    {
+        GameObject selected;
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                selected =Instantiate(test,new Vector3 (0 +i,0.5f + j,0), new Quaternion (0,0,0,0));
+                selected.GetComponentInChildren<SpriteRenderer>().sprite = heldGlass.GetComponent<TestMug>().garnishImages[i, j];
+            }
+        }
     }
 }
