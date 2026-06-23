@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     private bool handIsFull = false;
     [SerializeField]
     private GameObject handObj;
+
+    [SerializeField]
+    private GameObject itemLookedAt;
     [SerializeField]
     private GameObject heldItem;
     [SerializeField] private GameObject glass;
@@ -36,11 +39,24 @@ public class Player : MonoBehaviour
 
     /// <summary>
     /// Creates a new Vector3 called move and calculates the speed at wich it moves and then moves the player
+    /// Shoots out a raycist that checks wich item the player looks at and sets a bool to true or false in the script on that item
     /// </summary>
     void FixedUpdate()
     {
         Vector3 move = rb.position + transform.TransformDirection(movementInput.x, 0, movementInput.y).normalized * movementSpeed;
         rb.MovePosition(move);
+
+        RaycastHit hit;
+        LayerMask look = LayerMask.GetMask("Holdable", "Ingredient");
+        if(Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, look))
+        {
+            itemLookedAt = hit.collider.gameObject;
+            itemLookedAt.GetComponent<ItemWobble>().isBeingLookedAt = true;
+        }
+        else
+        {
+            itemLookedAt.GetComponent<ItemWobble>().isBeingLookedAt = false;
+        }
     }
 
     /// <summary>
