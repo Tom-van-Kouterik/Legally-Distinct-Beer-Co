@@ -82,6 +82,10 @@ public class ShiftManager : MonoBehaviour
     }
     public void ShiftStart()
     {
+        if(completedShifts >= 3)
+        {
+            return;
+        }
         SpawnIngredients();
         timer = maxTime;
         isOn = true;
@@ -91,7 +95,10 @@ public class ShiftManager : MonoBehaviour
     {
         completedShifts++;
         isOn = false;
-        ShowScore();
+        if (completedShifts >= 3)
+        {
+            ShowScore();
+        }
     }
 
     private void SpawnIngredients()
