@@ -14,7 +14,7 @@ public class Customers : MonoBehaviour
     private int money;
     private float patience;
     private bool isCorrect = false;
-    //private bool isDone = false;
+    private bool isDone = false;
     private bool isServed = false;
     private GameObject me;
     private GameObject bord;
@@ -32,18 +32,18 @@ public class Customers : MonoBehaviour
     }
     private void Update()
     {
-        
-        //if (patience >= 0 && !isServed && !isDone)
-        //{
-        //    patience -= Time.deltaTime;
-        //    timer.value = patience;
-        //}
-        //else if (patience <= 0 && !isDone)
-        //{
-        //    isDone = true;
-        //    StartCoroutine(nameof(Leave));
-        //}
-        
+
+        if (patience >= 0 && !isServed && !isDone)
+        {
+            patience -= Time.deltaTime;
+            timer.value = patience;
+        }
+        else if (patience <= 0 && !isDone)
+        {
+            isDone = true;
+            StartCoroutine(nameof(Leave));
+        }
+
     }
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)

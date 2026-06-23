@@ -14,7 +14,7 @@ public class TestMug : MonoBehaviour
     private int size;
     [SerializeField] private GameObject[] contents;
     [SerializeField] private Material[] visuals;
-    [SerializeField] public Sprite[,] garnishImages = new Sprite[8,6];
+    [SerializeField] public Sprite[,] garnishImages = new Sprite[6,6];
     [SerializeField] private Sprite[] glassImagesEmpty;
     [SerializeField] private Sprite[] glassImagesFull;
     [SerializeField] private Sprite[] glassImages_0;
@@ -37,7 +37,6 @@ public class TestMug : MonoBehaviour
             garnishImages[3, i] = glassImages_3[i];
             garnishImages[4, i] = glassImages_4[i];
             garnishImages[5, i] = glassImages_5[i];
-            garnishImages[6, i] = glassImagesFull[i];
         }
     }
     public void SetSize(int type)
