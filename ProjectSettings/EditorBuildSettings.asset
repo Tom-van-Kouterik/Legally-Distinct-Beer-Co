@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Ash/PlayTest.unity
-    guid: 1e516859c2144f94f92d55dcdfc9720e
+    path: Assets/Ash/Ash's Scene.unity
+    guid: f697fc263fb210f4ca25bfcefef1917a
   - enabled: 1
     path: Assets/Terra/MainScreenPlaceholder.unity
     guid: 4bbd443c78aae804f945ebe9e4ef6d6d

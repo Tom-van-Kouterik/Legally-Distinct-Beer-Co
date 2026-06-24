@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShiftManager : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private GameObject[] drinkPrefabs;
     [SerializeField] private GameObject[] glassPrefabs;
     [SerializeField] private GameObject[] garnishPrefabs;
+    [SerializeField] private GameObject candle;
+    [SerializeField] private GameObject canvas;
     private bool[] isTaken;
-    private int score;
-    private int wrong;
-    private int correct;
+    public int score;
+    public int wrong;
+    public int correct;
     private int completedShifts = 0;
     private int spawnedItems = 0;
-    private int maxTime = 50;
+    private int maxTime = 301;
     private float timer;
     private bool isOn = false;
     private bool spawnDelay = false;
@@ -41,15 +44,48 @@ public class ShiftManager : MonoBehaviour
             ShiftEnd();
         }
 
-        if (Mathf.Ceil(timer) % 5 == 0f && !spawnDelay && isOn)
+        if (Mathf.Ceil(timer) % 20 == 0f && !spawnDelay && isOn)
         {
             subManager.SpawnCustomer();
             spawnDelay = true;
             StartCoroutine(nameof(Spawn));
         }
+
+        if ((timer / maxTime) * 100 <= 100 && (timer / maxTime) * 100 > 75)
+        {
+            candle.transform.GetChild(0).gameObject.SetActive(true);
+            candle.transform.GetChild(1).gameObject.SetActive(false);
+            candle.transform.GetChild(2).gameObject.SetActive(false);
+            candle.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else if ((timer / maxTime) * 100 <= 75 && (timer / maxTime) * 100 > 50)
+        {
+            candle.transform.GetChild(0).gameObject.SetActive(false);
+            candle.transform.GetChild(1).gameObject.SetActive(true);
+            candle.transform.GetChild(2).gameObject.SetActive(false);
+            candle.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else if ((timer / maxTime) * 100 <= 55 && (timer / maxTime) * 100 > 25)
+        {
+            candle.transform.GetChild(0).gameObject.SetActive(false);
+            candle.transform.GetChild(1).gameObject.SetActive(false);
+            candle.transform.GetChild(2).gameObject.SetActive(true);
+            candle.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else
+        {
+            candle.transform.GetChild(0).gameObject.SetActive(false);
+            candle.transform.GetChild(1).gameObject.SetActive(false);
+            candle.transform.GetChild(2).gameObject.SetActive(false);
+            candle.transform.GetChild(3).gameObject.SetActive(true);
+        }
     }
     public void ShiftStart()
     {
+        if(completedShifts >= 3)
+        {
+            return;
+        }
         SpawnIngredients();
         timer = maxTime;
         isOn = true;
@@ -59,6 +95,10 @@ public class ShiftManager : MonoBehaviour
     {
         completedShifts++;
         isOn = false;
+        if (completedShifts >= 3)
+        {
+            ShowScore();
+        }
     }
 
     private void SpawnIngredients()
@@ -111,6 +151,7 @@ public class ShiftManager : MonoBehaviour
             drinks[rng] = true;
             spawnedItems++;
         }
+        UpdateLists();
     }
 
 
@@ -139,7 +180,7 @@ public class ShiftManager : MonoBehaviour
         {
             spawn = Random.Range(0, itemSpawns.Length);
         }
-        Instantiate(glassPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
+        Instantiate(drinkPrefabs[rng], itemSpawns[spawn].transform.position, itemSpawns[spawn].transform.rotation, itemSpawns[spawn].transform.parent).transform.SetParent(itemSpawns[spawn].transform);
         isTaken[spawn] = true;
         drinks[rng] = true;
         spawnedItems++;
@@ -187,6 +228,22 @@ public class ShiftManager : MonoBehaviour
             drinks[rng] = true;
             spawnedItems++;
         }
+        UpdateLists();
+    }
+    
+    private void UpdateLists()
+    {
+        subManager.drinkAcces = drinks;
+        subManager.glassAcces = glasses;
+        subManager.garnishAcces = garnishes;
+    }
+
+    private void ShowScore()
+    {
+        canvas.gameObject.SetActive(true);
+        canvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ("SCORE: " + score);
+        canvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ("DRINKS SERVED: " + correct);
+        canvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ("CUSTOMERS UPSET: " + wrong);
     }
     IEnumerator Spawn()
     {
