@@ -66,7 +66,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4945283488867977680
 CanvasRenderer:
@@ -89,14 +89,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1767786144, guid: 2507337764fc20a4b848ecf1bad0edf8, type: 3}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -442,6 +442,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5845906481519882753}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnEscape
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 12214d2a-d432-4b97-8a15-304c5e3a1c6b
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -463,10 +479,13 @@ MonoBehaviour:
   movementSpeed: 0.05
   handIsFull: 0
   handObj: {fileID: 186473220503755636}
+  itemLookedAt: {fileID: 0}
   heldItem: {fileID: 0}
   glass: {fileID: 139031870689360236, guid: 3fc435cb4b18e9d499352cec62eabbbb, type: 3}
   confirmUI: {fileID: 0}
   shiftManager: {fileID: 0}
+  crosshairUI: {fileID: 5108393123669851860}
+  pauseUI: {fileID: 0}
 --- !u!54 &8159300535864664105
 Rigidbody:
   m_ObjectHideFlags: 0
