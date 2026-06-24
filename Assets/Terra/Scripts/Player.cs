@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -17,11 +18,16 @@ public class Player : MonoBehaviour
     private bool handIsFull = false;
     [SerializeField]
     private GameObject handObj;
+
+    [SerializeField]
+    private GameObject itemLookedAt;
     [SerializeField]
     private GameObject heldItem;
     [SerializeField] private GameObject glass;
     [SerializeField] private Canvas confirmUI;
     [SerializeField] private GameObject shiftManager;
+    [SerializeField] private Canvas crosshairUI;
+    [SerializeField] private Canvas pauseUI;
 
     /// <summary>
     /// Sets the camera to the "myCam" variable and adds the necessary layers to the LayerMask
@@ -34,11 +40,24 @@ public class Player : MonoBehaviour
 
     /// <summary>
     /// Creates a new Vector3 called move and calculates the speed at wich it moves and then moves the player
+    /// Shoots out a raycist that checks wich item the player looks at and sets a bool to true or false in the script on that item
     /// </summary>
     void FixedUpdate()
     {
         Vector3 move = rb.position + transform.TransformDirection(movementInput.x, 0, movementInput.y).normalized * movementSpeed;
         rb.MovePosition(move);
+
+        RaycastHit hit;
+        LayerMask look = LayerMask.GetMask("Holdable", "Ingredient");
+        if(Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, look))
+        {
+            itemLookedAt = hit.collider.gameObject;
+            itemLookedAt.GetComponent<ItemWobble>().isBeingLookedAt = true;
+        }
+        else
+        {
+            itemLookedAt.GetComponent<ItemWobble>().isBeingLookedAt = false;
+        }
     }
 
     /// <summary>
@@ -54,6 +73,17 @@ public class Player : MonoBehaviour
         else
         {
             movementInput = Vector3.zero;
+        }
+    }
+
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            crosshairUI.gameObject.SetActive(false);
+            pauseUI.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -130,7 +160,9 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, book))
             {
                 Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0f;
                 confirmUI.gameObject.SetActive(true);
+                crosshairUI.gameObject.SetActive(false);
             }
 
             LayerMask bell = LayerMask.GetMask("Bell");
