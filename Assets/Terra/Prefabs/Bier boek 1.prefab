@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Buttons
   crosshairUI: {fileID: 0}
   pauseUI: {fileID: 0}
+  creditsUI: {fileID: 0}
 --- !u!1 &3693524224684478766
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Buttons
   crosshairUI: {fileID: 0}
   pauseUI: {fileID: 0}
+  creditsUI: {fileID: 0}
 --- !u!1 &7184567341578122560
 GameObject:
   m_ObjectHideFlags: 0
