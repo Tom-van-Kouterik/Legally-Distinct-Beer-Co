@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject glass;
     [SerializeField] private Canvas confirmUI;
     [SerializeField] private GameObject shiftManager;
+    [SerializeField] private Canvas crosshairUI;
+    [SerializeField] private Canvas pauseUI;
 
     /// <summary>
     /// Sets the camera to the "myCam" variable and adds the necessary layers to the LayerMask
@@ -54,6 +57,17 @@ public class Player : MonoBehaviour
         else
         {
             movementInput = Vector3.zero;
+        }
+    }
+
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            crosshairUI.gameObject.SetActive(false);
+            pauseUI.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -130,7 +144,9 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, book))
             {
                 Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0f;
                 confirmUI.gameObject.SetActive(true);
+                crosshairUI.gameObject.SetActive(false);
             }
 
             LayerMask bell = LayerMask.GetMask("Bell");
