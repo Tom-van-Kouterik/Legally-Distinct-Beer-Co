@@ -6,6 +6,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private Canvas crosshairUI;
     [SerializeField] private Canvas pauseUI;
 
+    [SerializeField] private Canvas tutorialUI;
     [SerializeField] private Canvas creditsUI;
     public void YesPressed()
     {
@@ -41,5 +42,12 @@ public class Buttons : MonoBehaviour
     public void CreditsBackButton()
     {
         creditsUI.gameObject.SetActive(false);
+    }
+
+    public void CloseTutorial()
+    {
+        crosshairUI.gameObject.SetActive(true);
+        tutorialUI.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
