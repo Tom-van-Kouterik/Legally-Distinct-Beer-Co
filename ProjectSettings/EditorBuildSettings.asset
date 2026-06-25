@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Ash/Ash's Scene.unity
-    guid: f697fc263fb210f4ca25bfcefef1917a
+    path: Assets/Final Project/mainMenu.unity
+    guid: f120fd2d949acac4887b242a38004522
   - enabled: 1
-    path: Assets/Terra/MainScreenPlaceholder.unity
-    guid: 4bbd443c78aae804f945ebe9e4ef6d6d
+    path: Assets/Final Project/mainScene.unity
+    guid: 7e6e368a622e2ad46af06361d07123b9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}

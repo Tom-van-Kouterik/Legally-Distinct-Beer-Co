@@ -21,7 +21,7 @@ public class ShiftManager : MonoBehaviour
     public int correct;
     private int completedShifts = 0;
     private int spawnedItems = 0;
-    private int maxTime = 301;
+    private int maxTime = 11;
     private float timer;
     private bool isOn = false;
     private bool spawnDelay = false;
@@ -240,7 +240,6 @@ public class ShiftManager : MonoBehaviour
 
     private void ShowScore()
     {
-        canvas.gameObject.SetActive(true);
         canvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ("SCORE: " + score);
         canvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ("HAPPY CUSTOMERS: " + correct);
         canvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ("ANGRY CUSTOMERS: " + wrong);

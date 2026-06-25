@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
                 heldItem.transform.parent = handObj.transform;
                 heldItem.transform.localScale = new Vector3(4, 4, 4);
                 heldItem.transform.localPosition = new Vector3 (0,0,0);
-                heldItem.transform.Rotate(0, 45, 0);
+                heldItem.transform.rotation = handObj.transform.rotation;
                 heldItem.GetComponent<TestMug>().SetSize(hit.collider.GetComponent<Ingredient>().ingredientNumber);
                 handIsFull = true;
             }

@@ -10,7 +10,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private Canvas creditsUI;
     public void YesPressed()
     {
-        SceneManager.LoadScene("0");
+        SceneManager.LoadScene(0);
     }
 
     public void NoPressed()
@@ -31,7 +31,7 @@ public class Buttons : MonoBehaviour
 
     public void GameScene()
     {
-       SceneManager.LoadScene("1");
+       SceneManager.LoadScene(1);
     }
 
     public void CreditsButton()

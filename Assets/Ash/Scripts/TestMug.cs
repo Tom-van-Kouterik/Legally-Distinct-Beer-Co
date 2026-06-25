@@ -52,7 +52,7 @@ public class TestMug : MonoBehaviour
         {
             size = 4;
         }
-        else if (type > 1 && type <= 2)
+        else if (type > 1 && type <= 3)
         {
             size = 5;
         }
