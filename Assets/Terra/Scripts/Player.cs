@@ -53,9 +53,9 @@ public class Player : MonoBehaviour
             itemLookedAt = hit.collider.gameObject;
             itemLookedAt.GetComponent<ItemWobble>().isBeingLookedAt = true;
         }
-        else
+        else if(itemLookedAt != null)
         {
-            itemLookedAt.GetComponent<ItemWobble>().isBeingLookedAt = false;
+            itemLookedAt.GetComponent<ItemWobble>().isBeingLookedAt = false; 
         }
     }
 

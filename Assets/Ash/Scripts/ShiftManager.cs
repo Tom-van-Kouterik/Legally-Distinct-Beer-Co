@@ -242,8 +242,8 @@ public class ShiftManager : MonoBehaviour
     {
         canvas.gameObject.SetActive(true);
         canvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ("SCORE: " + score);
-        canvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ("DRINKS SERVED: " + correct);
-        canvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ("CUSTOMERS UPSET: " + wrong);
+        canvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ("HAPPY CUSTOMERS: " + correct);
+        canvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ("ANGRY CUSTOMERS: " + wrong);
     }
     IEnumerator Spawn()
     {

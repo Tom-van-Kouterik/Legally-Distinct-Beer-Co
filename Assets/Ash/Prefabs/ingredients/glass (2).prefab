@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9139132074709930960}
   - component: {fileID: 8440548083417831331}
   - component: {fileID: 6230557491278496330}
+  - component: {fileID: 3965849093693897381}
   m_Layer: 7
   m_Name: glass (2)
   m_TagString: Untagged
@@ -156,6 +157,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientNumber: 2
   isDrink: 0
+--- !u!114 &3965849093693897381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737418744655675621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3a486d778b9ab42b6941070b4c62ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWobble
+  isBeingLookedAt: 0
+  defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1 &4690656429942378122
 GameObject:
   m_ObjectHideFlags: 0

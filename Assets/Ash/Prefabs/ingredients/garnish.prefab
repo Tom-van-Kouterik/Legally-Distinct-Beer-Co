@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1431703120580893589}
   - component: {fileID: 1581424700978625464}
   - component: {fileID: 29604071926539785}
+  - component: {fileID: 6536852908591749016}
   m_Layer: 10
   m_Name: garnish
   m_TagString: Untagged
@@ -156,6 +157,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientNumber: 0
   isDrink: 0
+--- !u!114 &6536852908591749016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570185286102913441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3a486d778b9ab42b6941070b4c62ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWobble
+  isBeingLookedAt: 0
+  defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1 &7247980730360314214
 GameObject:
   m_ObjectHideFlags: 0
