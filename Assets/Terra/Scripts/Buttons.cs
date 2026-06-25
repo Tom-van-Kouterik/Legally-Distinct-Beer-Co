@@ -50,4 +50,10 @@ public class Buttons : MonoBehaviour
         tutorialUI.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Application.quitting += () => Debug.Log("Game is exiting");
+    }
 }
