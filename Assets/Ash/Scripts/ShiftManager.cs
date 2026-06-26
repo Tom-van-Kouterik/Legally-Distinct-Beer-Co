@@ -24,6 +24,7 @@ public class ShiftManager : MonoBehaviour
     private int maxTime = 161;
     private float timer;
     private bool isOn = false;
+    private bool downTime = false;
     private bool spawnDelay = false;
 
     private void Start()
@@ -39,8 +40,9 @@ public class ShiftManager : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        else if (timer <= 0 && isOn)
+        else if (timer <= 0 && !downTime)
         {
+            isOn = false;
             ShiftEnd();
         }
 
@@ -87,14 +89,22 @@ public class ShiftManager : MonoBehaviour
             return;
         }
         SpawnIngredients();
+        downTime = false;
         timer = maxTime;
         isOn = true;
     }
 
     public void ShiftEnd()
     {
+        for (int i = 0; i < subManager.isOcupied.Count; i++)
+        {
+            if (subManager.isOcupied[i] == true)
+            {
+                return;
+            }
+        }
+        downTime = true;
         completedShifts++;
-        isOn = false;
         if (completedShifts >= 3)
         {
             ShowScore();
