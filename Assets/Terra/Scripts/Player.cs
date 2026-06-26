@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         if (tutorialUI.gameObject.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
         }
     }
 
