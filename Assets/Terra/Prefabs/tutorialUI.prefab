@@ -326,5 +326,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Buttons
   crosshairUI: {fileID: 0}
   pauseUI: {fileID: 0}
-  tutorialUI: {fileID: 0}
-  creditsUI: {fileID: 6514493586771337879}
+  tutorialUI: {fileID: 6514493586771337879}
+  creditsUI: {fileID: 0}

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Security.AccessControl;
 
 public class Player : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Canvas crosshairUI;
     [SerializeField] private Canvas pauseUI;
 
+    [SerializeField] private Canvas tutorialUI;
     /// <summary>
     /// Sets the camera to the "myCam" variable and adds the necessary layers to the LayerMask
     /// </summary>
@@ -35,6 +37,10 @@ public class Player : MonoBehaviour
     {  
         myCam = Camera.main;
         rb = GetComponent<Rigidbody>();
+        if (tutorialUI.gameObject.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     /// <summary>

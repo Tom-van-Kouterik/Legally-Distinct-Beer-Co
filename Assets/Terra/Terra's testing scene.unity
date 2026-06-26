@@ -438,6 +438,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!223 &152592070 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6514493586771337879, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
+  m_PrefabInstance: {fileID: 6585758934726050101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &178620092 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5845906481519882753, guid: b98e6ffac7f16574582566654dfcf459, type: 3}
@@ -3854,6 +3859,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4293832589940589576}
     - target: {fileID: 5845906481519882753, guid: b98e6ffac7f16574582566654dfcf459, type: 3}
+      propertyPath: tutorialUI
+      value: 
+      objectReference: {fileID: 152592070}
+    - target: {fileID: 5845906481519882753, guid: b98e6ffac7f16574582566654dfcf459, type: 3}
       propertyPath: crosshairUI
       value: 
       objectReference: {fileID: 2060146187}
@@ -4000,10 +4009,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: tutorialUI
       objectReference: {fileID: 0}
-    - target: {fileID: 305941560653558053, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 998345492729714504, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4084,18 +4089,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6742375449036913808, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.64
+    - target: {fileID: 4912884651852727580, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
+      propertyPath: creditsUI
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6867694710817897323, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -19.299988
-      objectReference: {fileID: 0}
-    - target: {fileID: 6867694710817897323, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -5.399994
-      objectReference: {fileID: 0}
+    - target: {fileID: 4912884651852727580, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
+      propertyPath: tutorialUI
+      value: 
+      objectReference: {fileID: 152592070}
+    - target: {fileID: 4912884651852727580, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
+      propertyPath: crosshairUI
+      value: 
+      objectReference: {fileID: 2060146187}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
