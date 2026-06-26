@@ -10,7 +10,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private Canvas creditsUI;
     public void YesPressed()
     {
-        SceneManager.LoadScene("0");
+        SceneManager.LoadScene(0);
     }
 
     public void NoPressed()
@@ -31,7 +31,7 @@ public class Buttons : MonoBehaviour
 
     public void GameScene()
     {
-       SceneManager.LoadScene("1");
+       SceneManager.LoadScene(1);
     }
 
     public void CreditsButton()
@@ -49,5 +49,11 @@ public class Buttons : MonoBehaviour
         crosshairUI.gameObject.SetActive(true);
         tutorialUI.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Application.quitting += () => Debug.Log("Game is exiting");
     }
 }

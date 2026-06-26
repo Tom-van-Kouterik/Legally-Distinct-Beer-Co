@@ -9,7 +9,7 @@ public class ItemWobble : MonoBehaviour
     public Vector3 defaultScale;
     private float pulseSpeed = 2.0f;
     private float minScale;
-    private float maxScale = 0.03f;
+    private float maxScale = 0.05f;
     
     //On start the defaultScale gets set to the scale of the object
     void Start()

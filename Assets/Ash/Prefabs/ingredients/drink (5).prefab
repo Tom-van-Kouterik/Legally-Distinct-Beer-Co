@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 62541075883193698}
   - component: {fileID: 8589858091515347068}
   - component: {fileID: 2259486236282345196}
+  - component: {fileID: -6793961472076303381}
   m_Layer: 10
   m_Name: drink (5)
   m_TagString: Untagged
@@ -247,3 +248,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientNumber: 5
   isDrink: 1
+--- !u!114 &-6793961472076303381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814540031590729093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3a486d778b9ab42b6941070b4c62ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemWobble
+  isBeingLookedAt: 0
+  defaultScale: {x: 0, y: 0, z: 0}
