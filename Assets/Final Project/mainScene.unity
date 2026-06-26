@@ -192,6 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924d9c7775bc5bb48b30e9cd93c814a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+--- !u!223 &246823626 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6514493586771337879, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
+  m_PrefabInstance: {fileID: 825263103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &317765487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -924,6 +929,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4912884651852727580, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
+      propertyPath: crosshairUI
+      value: 
+      objectReference: {fileID: 1564716287}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1460,6 +1469,10 @@ PrefabInstance:
       propertyPath: confirmUI
       value: 
       objectReference: {fileID: 383333701}
+    - target: {fileID: 5845906481519882753, guid: b98e6ffac7f16574582566654dfcf459, type: 3}
+      propertyPath: tutorialUI
+      value: 
+      objectReference: {fileID: 246823626}
     - target: {fileID: 5845906481519882753, guid: b98e6ffac7f16574582566654dfcf459, type: 3}
       propertyPath: crosshairUI
       value: 
