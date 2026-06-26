@@ -50,6 +50,7 @@ public class Buttons : MonoBehaviour
         crosshairUI.gameObject.SetActive(true);
         tutorialUI.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
     }
 
     // public void QuitGame()
