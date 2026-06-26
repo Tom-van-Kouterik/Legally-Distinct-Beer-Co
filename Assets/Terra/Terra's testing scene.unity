@@ -3979,6 +3979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4783483783255510588, guid: b9f1ce5450ffc7a4ca1a3e65f5e0201d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

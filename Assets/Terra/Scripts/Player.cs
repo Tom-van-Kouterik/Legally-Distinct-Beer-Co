@@ -75,16 +75,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnEscape(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            crosshairUI.gameObject.SetActive(false);
-            pauseUI.gameObject.SetActive(true);
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-        }
-    }
+    // public void OnEscape(InputAction.CallbackContext context)
+    // {
+    //     if (context.performed)
+    //     {
+    //         crosshairUI.gameObject.SetActive(false);
+    //         pauseUI.gameObject.SetActive(true);
+    //         Time.timeScale = 0f;
+    //         Cursor.lockState = CursorLockMode.None;
+    //     }
+    // }
 
     /// <summary>
     /// Checks if the player inputs the button for the interaction context
@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0f;
-                confirmUI.gameObject.SetActive(true);
+                pauseUI.gameObject.SetActive(true);
                 crosshairUI.gameObject.SetActive(false);
             }
 
