@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour
 {
@@ -51,9 +52,9 @@ public class Buttons : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-        Application.quitting += () => Debug.Log("Game is exiting");
-    }
+    // public void QuitGame()
+    // {
+    //     Application.Quit();
+    //     Application.quitting += () => Debug.Log("Game is exiting");
+    // }
 }
