@@ -15,7 +15,7 @@ public class Customers : MonoBehaviour
     private float patience;
     private bool isCorrect = false;
     private bool isDone = false;
-    private bool isServed = false;
+    public bool isServed = false;
     private GameObject me;
     private GameObject bord;
     private GameObject manager;
@@ -48,6 +48,10 @@ public class Customers : MonoBehaviour
     //a simple tag compare, comparing the order they got and what they actually ordered, then acts based upon if it was the correct order or not
     public void CompareOrder(GameObject meal)
     {
+        if (isServed)
+        {
+            return;
+        }
         isServed = true;
         meal.transform.SetParent(bord.transform);
         meal.transform.SetPositionAndRotation(bord.transform.position, bord.transform.rotation);
@@ -80,7 +84,7 @@ public class Customers : MonoBehaviour
         visuals = GetComponent<OrderUI>();
         glass = glassValue;
         money = UnityEngine.Random.Range(20, 30);
-        patience = UnityEngine.Random.Range(40, 50);
+        patience = UnityEngine.Random.Range(30, 40);
         timer.maxValue = (int)patience;
         delay = UnityEngine.Random.Range(2, 5);
         garnish = garnishValue;
@@ -99,24 +103,22 @@ public class Customers : MonoBehaviour
 
     IEnumerator Leave()
     {
-        bool complete = false;
         if (isServed)
         {
             yield return new WaitForSeconds(2);
             Destroy(bord.transform.GetChild(0).gameObject);
         }
 
-        if (isCorrect && !complete)
+        if (isCorrect)
         {
             yield return new WaitForSeconds(delay);
             manager.GetComponent<CustomerManager>().CompleteOrder(money + (int)patience, true);
         }
-        else if (!isCorrect && !complete)
+        else if (!isCorrect)
         {
             yield return new WaitForSeconds(delay);
             manager.GetComponent<CustomerManager>().CompleteOrder(0, false);
         }
-        complete = true;
         manager.GetComponent<CustomerManager>().DestroyCustomer(seatNumber);
         yield return null;
     }

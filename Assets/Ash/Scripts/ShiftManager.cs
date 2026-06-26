@@ -21,7 +21,7 @@ public class ShiftManager : MonoBehaviour
     public int correct;
     private int completedShifts = 0;
     private int spawnedItems = 0;
-    private int maxTime = 11;
+    private int maxTime = 161;
     private float timer;
     private bool isOn = false;
     private bool spawnDelay = false;
@@ -82,7 +82,7 @@ public class ShiftManager : MonoBehaviour
     }
     public void ShiftStart()
     {
-        if(completedShifts >= 3)
+        if(completedShifts >= 3 || isOn)
         {
             return;
         }
