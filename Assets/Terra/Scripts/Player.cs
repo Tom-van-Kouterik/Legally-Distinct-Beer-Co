@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
             LayerMask customer = LayerMask.GetMask("Customer");
             if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, Mathf.Infinity, customer))
             {
-                if (handIsFull && hit.collider.GetComponent<Customers>().isServed == false)
+                if (handIsFull && hit.collider.GetComponent<Customers>().isDone == false)
                 {
                     hit.collider.GetComponent<Customers>().CompareOrder(heldItem);
                     handIsFull = false;

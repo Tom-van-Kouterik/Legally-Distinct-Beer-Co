@@ -14,8 +14,8 @@ public class Customers : MonoBehaviour
     private int money;
     private float patience;
     private bool isCorrect = false;
-    private bool isDone = false;
-    public bool isServed = false;
+    public bool isDone = false;
+    private bool isServed = false;
     private GameObject me;
     private GameObject bord;
     private GameObject manager;
@@ -40,7 +40,6 @@ public class Customers : MonoBehaviour
         }
         else if (patience <= 0 && !isDone)
         {
-            isDone = true;
             StartCoroutine(nameof(Leave));
         }
 
@@ -103,6 +102,7 @@ public class Customers : MonoBehaviour
 
     IEnumerator Leave()
     {
+        isDone = true;
         if (isServed)
         {
             yield return new WaitForSeconds(2);
