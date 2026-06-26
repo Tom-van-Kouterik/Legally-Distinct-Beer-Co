@@ -4093,22 +4093,6 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4052719282961504495, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4052719282961504495, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912884651852727580, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: creditsUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912884651852727580, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
-      propertyPath: tutorialUI
-      value: 
-      objectReference: {fileID: 152592070}
     - target: {fileID: 4912884651852727580, guid: 09f67812a7f513f4f99173e3c365f334, type: 3}
       propertyPath: crosshairUI
       value: 
