@@ -6,7 +6,7 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private List<GameObject> seats = new();
     [SerializeField] private List<GameObject> plates = new();
     [SerializeField] public List<GameObject> people = new();
-    [SerializeField] private List<bool> isOcupied = new() {false, false, false, false};
+    public List<bool> isOcupied = new() {false, false, false, false};
     [SerializeField] private ShiftManager higherManager;
     [SerializeField] private GameObject customer;
     public bool[] drinkAcces = new bool[6];
